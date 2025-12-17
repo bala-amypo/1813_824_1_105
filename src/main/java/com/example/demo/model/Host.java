@@ -23,6 +23,21 @@ public class Host{
     public void setHostName(String HostName){
         this.hostName=hostName;
     }
+    public String FullName(){
+        return fullname;
+    }
+    public void setFullName(String FullName){
+        this.fullname=fullname;
+    }
+    public String Email(){
+        return email;
+    }
+    public void Email(String Email){
+        this.email=email;
+    }
+    public String d
+
+
 
 
     
