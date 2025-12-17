@@ -7,20 +7,19 @@ import jakarta.presistence.constraints.NotNull;
 @Entity
 public class Visitor{
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    @NotNull("This field is required")
+    @NotNull(message="This field is required")
     private String fullName;
     private String email;
     private String phone;
-    @NotNull("This field is required")
+    @NotNull(message="This field is required")
     private String idProofNumber;
     private String createdAt;
     
     public Long  getId(){
         return id;
     }
-    public void setId(int id){
+    public void setId(Long id){
         this.id=id;
     }
     public String getFullName(){
