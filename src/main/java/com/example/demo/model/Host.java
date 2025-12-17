@@ -1,5 +1,8 @@
 package com.example.demo.model;
-import jakarta.presistence.Entity
+import jakarta.presistence.Entity;
+import jakarta.presistence.GeneratedValue;
+import jakarta.presistence.Id;
+
 @Entity
 
 public class Host{
@@ -8,10 +11,12 @@ public class Host{
     private Long id;
     private String hostName;
     private String fullname;
-    private String email;
     private String department;
     private String phone;
     private String createdAt;
+     @column(unique=true)
+    private String email;
+    
 
     public Long getId(){
         return id;
