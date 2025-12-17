@@ -18,6 +18,6 @@ public class Visitor{
         return fullName;
     }
     public void setFullName(string fullName){
-        this.
+        this.fullName=fullName;
     }
 }
