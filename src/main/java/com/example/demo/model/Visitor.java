@@ -2,6 +2,7 @@ package com.example.demo.model;
 @Entity
 public class Visitor{
     @Id
+    @GeneratedValue=
     private Long id;
     private String fullName;
     private String email;

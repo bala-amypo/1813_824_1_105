@@ -1,3 +1,4 @@
+
 package com.example.demo.model;
 import jakarta.presistence.Entity;
 import jakarta.presistence.GeneratedValue;
@@ -5,8 +6,8 @@ import jakarta.presistence.Id;
 import jakarta.presistence.column;
 import jakarta.presistence.constraints.NotNull;
 
-@Entity
 
+@Entity
 public class Host{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
