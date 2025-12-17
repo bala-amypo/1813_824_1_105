@@ -3,6 +3,7 @@ import jakarta.presistence.Entity;
 import jakarta.presistence.GeneratedValue;
 import jakarta.presistence.Id;
 import jakarta.presistence.column;
+import jakarta.presistence.constraints.NotNull;
 
 @Entity
 
@@ -12,12 +13,14 @@ public class Host{
     private Long id;
     private String fullname;
     private String createdAt;
-    @Required
+    @NotNull("This field is required")
     private String hostName;
+    @NotNull("This field is required")
     private String department;
+    @NotNull("This field is required")
     private String phone;
     
-     @column(unique=true)
+    @column(unique=true)
     private String email;
 
     public Long getId(){
