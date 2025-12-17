@@ -43,7 +43,7 @@ public class Visitor{
     public String getIdProofNumber(){
         return idProofNumber;
     }
-    public void setIdproofNumber(String idProofNumber){
+    public void setIdProofNumber(String idProofNumber){
         this.idProofNumber=idProofNumber;
     }
     public String getCreatedAt(){
