@@ -1,13 +1,10 @@
 package com.example.demo.model;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
-
-
 @Entity
 public class Host{
     @Id
@@ -37,10 +34,10 @@ public class Host{
     public void setHostName(String hostName){
         this.hostName=hostName;
     }
-    public String getFullName(){
+    public String getFullname(){
         return fullname;
     }
-    public void setFullName(String fullName){
+    public void setFullname(String fullname){
         this.fullname=fullname;
     }
     public String getEmail(){
@@ -70,7 +67,7 @@ public class Host{
     public Host(Long id,String hostName, String fullName,String email,String department,String phone,String createdAt){
         this.id=id;
         this.hostName=hostName;
-        this.fullName=fullName;
+        this.fullname=fullname;
         this.email=email;
         this.department=department;
         this.phone=phone;
@@ -79,5 +76,5 @@ public class Host{
     public Host(){
 
     }
-    Host obj=new Host();
+   
 }
