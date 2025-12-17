@@ -1,6 +1,7 @@
 package com.example.demo.model;
 @Entity
 public class Visitor{
+    @Id-prim
     private Long id;
     private String fullName;
     private String email;
@@ -38,5 +39,5 @@ public class Visitor{
     public void setIdproofNumber(String IdProofNumber){
         this.idProofNumber=idProofNumber;
     }
-    
+
 }
