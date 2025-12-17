@@ -1,9 +1,9 @@
 package com.example.demo.model;
-import jakarta.presistence.Entity;
-import jakarta.presistence.GeneratedValue;
-import jakarta.presistence.GenerationType;
-import jakarta.presistence.Id;
-import jakarta.presistence.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.peresistence.GenerationType;
+import jakarta.peresistence.Id;
+import jakarta.validation.constraints.NotNull;
 @Entity
 public class Visitor{
     @Id
@@ -25,7 +25,7 @@ public class Visitor{
     public String getFullName(){
         return fullName;
     }
-    public void setFullName(string fullName){
+    public void setFullName(String fullName){
         this.fullName=fullName;
     }
     public String getEmail(){
