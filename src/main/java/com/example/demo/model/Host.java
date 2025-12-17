@@ -1,11 +1,11 @@
 package com.example.demo.model;
 
-import jakarta.presistence.Entity;
-import jakarta.presistence.GeneratedValue;
-import jakarta.presistence.GenerationType;
-import jakarta.presistence.Id;
-import jakarta.presistence.column;
-import jakarta.presistence.constraints.NotNull;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.column;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -15,11 +15,11 @@ public class Host{
     private Long id;
     private String fullname;
     private String createdAt;
-    @NotNull("This field is required")
+    @NotNull(message="This field is required")
     private String hostName;
-    @NotNull("This field is required")
+    @NotNull(message="This field is required")
     private String department;
-    @NotNull("This field is required")
+    @NotNull(message="This field is required")
     private String phone;
     
     @column(unique=true)
@@ -28,7 +28,7 @@ public class Host{
     public Long getId(){
         return id;
     }
-    public void setId(String id){
+    public void setId(Long id){
         this.id=id;
     }
     public String getHostName(){
@@ -64,7 +64,7 @@ public class Host{
     public String getCreatedAt(){
         return createdAt;
     }
-    public void setCreateAt(String CreatedAt){
+    public void setCreatedAt(String CreatedAt){
         this.createdAt=createdAt;
     }
     public Host(Long id,String fullName,String email,String phone,String idProofNumber,String createdAt){
