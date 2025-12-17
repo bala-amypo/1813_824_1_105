@@ -15,37 +15,37 @@ public class Host{
     public Long getId(){
         return id;
     }
-    public void setId(String Id){
+    public void setId(String id){
         this.id=id;
     }
     public String getHostName(){
         return hostName;
     }
-    public void setHostName(String HostName){
+    public void setHostName(String hostName){
         this.hostName=hostName;
     }
     public String getFullName(){
         return fullname;
     }
-    public void setFullName(String FullName){
+    public void setFullName(String fullName){
         this.fullname=fullname;
     }
     public String getEmail(){
         return email;
     }
-    public void setEmail(String Email){
+    public void setEmail(String email){
         this.email=email;
     }
     public String getDepartment(){
         return Department;
     }
-    public void setDepartment(String Department){
+    public void setDepartment(String department){
         this.department=department;
     }
     public String getPhone(){
         return Phone;
     }
-    public void setPhone(String Phone){
+    public void setPhone(String phone){
         this.phone=phone;
     }
     public String getCreatedAt(){
@@ -54,12 +54,5 @@ public class Host{
     public void setCreateAt(String CreatedAt){
         this.createdAt=createdAt;
     }
-
-
-
-
-
-    
-
-
+    public Host(Long id,)
 }

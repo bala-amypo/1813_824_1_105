@@ -36,13 +36,13 @@ public class Visitor{
     public String getIdProofNumber(){
         return idProofNumber;
     }
-    public void setIdproofNumber(String IdProofNumber){
+    public void setIdproofNumber(String idProofNumber){
         this.idProofNumber=idProofNumber;
     }
     public String getCreatedAt(){
         return createdAt;
     }
-    public void setCreatedAt(String CreatedAt){
+    public void setCreatedAt(String createdAt){
         this.createdAt=createdAt;
     }
     
