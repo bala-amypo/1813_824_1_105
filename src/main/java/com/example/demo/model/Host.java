@@ -22,7 +22,7 @@ public class Host{
     @NotNull(message="This field is required")
     private String phone;
     
-    @column(unique=true)
+    @Column(unique=true)
     private String email;
 
     public Long getId(){
