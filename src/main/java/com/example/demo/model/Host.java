@@ -54,5 +54,16 @@ public class Host{
     public void setCreateAt(String CreatedAt){
         this.createdAt=createdAt;
     }
-    public Host(Long id,)
+    public Host(Long id,String fullName,String email,String phone,String idProofNumber,String createdAt){
+        this.id=id;
+        this.fullName=fullName;
+        this.email=email;
+        this.phone=phone;
+        this.idProofNumber=idProofNumber;
+        this.createdAt=createdAt;
+    }
+    public Host(){
+
+    }
+    Host obj=new Host();
 }
