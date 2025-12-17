@@ -1,7 +1,7 @@
 package com.example.demo.model;
 @Entity
 public class Visitor{
-    @Id-prim
+    @Id-primary key
     private Long id;
     private String fullName;
     private String email;
@@ -38,6 +38,12 @@ public class Visitor{
     }
     public void setIdproofNumber(String IdProofNumber){
         this.idProofNumber=idProofNumber;
+    }
+    public String CreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(String CreatedAt){
+        this.createdAt=createdAt;
     }
 
 }
