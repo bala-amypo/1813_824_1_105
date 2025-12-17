@@ -10,8 +10,18 @@ public class Host{
     private String department;
     private String phone;
     private String createdAt;
+
     public String Id(){
         return id;
+    }
+    public void setId(String Id){
+        this.id=id;
+    }
+    public String HostName(){
+        return hostName;
+    }
+    public void setHostName(String HostName){
+        this.hostName=hostName;
     }
 
 
