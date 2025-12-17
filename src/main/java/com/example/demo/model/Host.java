@@ -3,6 +3,7 @@ package com.example.demo.model;
 
 public class Host{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String hostName;
     private String fullname;
@@ -11,7 +12,7 @@ public class Host{
     private String phone;
     private String createdAt;
 
-    public String getId(){
+    public Long getId(){
         return id;
     }
     public void setId(String Id){
