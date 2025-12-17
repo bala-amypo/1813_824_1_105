@@ -32,10 +32,28 @@ public class Host{
     public String Email(){
         return email;
     }
-    public void Email(String Email){
+    public void setEmail(String Email){
         this.email=email;
     }
-    public String d
+    public String Department(){
+        return Department;
+    }
+    public void setDepartment(String Department){
+        this.department=department;
+    }
+    public String Phone(){
+        return Phone;
+    }
+    public void setPhone(String Phone){
+        this.phone=phone;
+    }
+    public String CreatedAt(){
+        return CreatedAt;
+    }
+    public void setCreateAt(String C){
+        this.phone=phone;
+    }
+
 
 
 
