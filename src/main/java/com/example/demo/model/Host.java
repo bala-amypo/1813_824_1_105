@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.column;
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotNull;
 
 
@@ -67,12 +67,13 @@ public class Host{
     public void setCreatedAt(String CreatedAt){
         this.createdAt=createdAt;
     }
-    public Host(Long id,String fullName,String email,String phone,String idProofNumber,String createdAt){
+    public Host(Long id,String hostName, String fullName,String email,String department,String phone,String createdAt){
         this.id=id;
+        this.hostName=hostName;
         this.fullName=fullName;
         this.email=email;
+        this.department=department;
         this.phone=phone;
-        this.idProofNumber=idProofNumber;
         this.createdAt=createdAt;
     }
     public Host(){
