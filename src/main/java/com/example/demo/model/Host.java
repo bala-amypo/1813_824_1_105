@@ -10,14 +10,15 @@ public class Host{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private String hostName;
     private String fullname;
+    private String createdAt;
+    @Required
+    private String hostName;
     private String department;
     private String phone;
-    private String createdAt;
+    
      @column(unique=true)
     private String email;
-    
 
     public Long getId(){
         return id;
@@ -44,19 +45,19 @@ public class Host{
         this.email=email;
     }
     public String getDepartment(){
-        return Department;
+        return department;
     }
     public void setDepartment(String department){
         this.department=department;
     }
     public String getPhone(){
-        return Phone;
+        return phone;
     }
     public void setPhone(String phone){
         this.phone=phone;
     }
     public String getCreatedAt(){
-        return CreatedAt;
+        return createdAt;
     }
     public void setCreateAt(String CreatedAt){
         this.createdAt=createdAt;
