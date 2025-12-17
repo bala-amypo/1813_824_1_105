@@ -1,7 +1,8 @@
-
 package com.example.demo.model;
+
 import jakarta.presistence.Entity;
 import jakarta.presistence.GeneratedValue;
+import jakarta.presistence.GenerationType;
 import jakarta.presistence.Id;
 import jakarta.presistence.column;
 import jakarta.presistence.constraints.NotNull;
