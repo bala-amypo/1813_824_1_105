@@ -1,7 +1,7 @@
 package com.example.demo.model;
 @Entity
 public class Visitor{
-    @Id-primary key
+    @Id
     private Long id;
     private String fullName;
     private String email;
@@ -45,5 +45,6 @@ public class Visitor{
     public void setCreatedAt(String CreatedAt){
         this.createdAt=createdAt;
     }
+    
 
 }
