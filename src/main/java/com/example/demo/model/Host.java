@@ -11,47 +11,47 @@ public class Host{
     private String phone;
     private String createdAt;
 
-    public String Id(){
+    public String getId(){
         return id;
     }
     public void setId(String Id){
         this.id=id;
     }
-    public String HostName(){
+    public String getHostName(){
         return hostName;
     }
     public void setHostName(String HostName){
         this.hostName=hostName;
     }
-    public String FullName(){
+    public String getFullName(){
         return fullname;
     }
     public void setFullName(String FullName){
         this.fullname=fullname;
     }
-    public String Email(){
+    public String getEmail(){
         return email;
     }
     public void setEmail(String Email){
         this.email=email;
     }
-    public String Department(){
+    public String getDepartment(){
         return Department;
     }
     public void setDepartment(String Department){
         this.department=department;
     }
-    public String Phone(){
+    public String getPhone(){
         return Phone;
     }
     public void setPhone(String Phone){
         this.phone=phone;
     }
-    public String CreatedAt(){
+    public String getCreatedAt(){
         return CreatedAt;
     }
-    public void setCreateAt(String C){
-        this.phone=phone;
+    public void setCreateAt(String CreatedAt){
+        this.createdAt=createdAt;
     }
 
 

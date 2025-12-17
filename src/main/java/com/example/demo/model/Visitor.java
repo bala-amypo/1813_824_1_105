@@ -27,19 +27,19 @@ public class Visitor{
     public void setEmail(String email){
         this.email=email;
     }
-    public String Phone(){
+    public String getPhone(){
         return phone;
     }
     public void setPhone(String phone){
         this.phone=phone;
     }
-    public String IdProofNumber(){
+    public String getIdProofNumber(){
         return idProofNumber;
     }
     public void setIdproofNumber(String IdProofNumber){
         this.idProofNumber=idProofNumber;
     }
-    public String CreatedAt(){
+    public String getCreatedAt(){
         return createdAt;
     }
     public void setCreatedAt(String CreatedAt){
