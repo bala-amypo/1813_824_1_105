@@ -6,5 +6,5 @@ public interface VisitorService{
   public Visitor createVisitor(Visitor visitor);
 
  public Visitor getVisitor(Long id);
- public 
+ public Visitor getAllVisitor();
 }
