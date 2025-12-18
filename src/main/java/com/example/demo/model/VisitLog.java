@@ -5,6 +5,19 @@ public class VisitLog{
     private String host;
     private String checkInTime;
     private String checkOutTime;
-    private String
+    private String purpose;
+    private Boolean accessGranted;
+    private Boolean alertSent;
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id=id;
+    }
+    public String getVisitor(){
+        return visitor;
+    }
+    public void setVisitor(String fullName){
+        this.fullName=fullName;
 
 }
