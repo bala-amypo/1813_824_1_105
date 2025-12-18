@@ -22,5 +22,7 @@ public class VisitorController{
         return obj.getVisitor(id);
     }
     @GetMapping("/{id}")
-    List<Visitor> getAllVisitor();
+    public List<Visitor> getVisitor(){
+        return obj.getAllVisitor();
+    }
 }

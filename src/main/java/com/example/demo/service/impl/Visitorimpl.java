@@ -1,7 +1,6 @@
 package com.example.demo.service.impl;
 import java.util.List;
 import com.example.demo.service.VisitorService;
-
 import org.springframework.stereotype.Service;
 import com.example.demo.repository.Visitorrepository;
 import com.example.demo.model.Visitor;
@@ -14,9 +13,9 @@ public class Visitorimpl implements VisitorService {
         return obj.save(visitor);
     }
     public Visitor getVisitor(Long id){
-      return obj.findById(id);
+      return obj.findById(id).orEl;
     }
-    public List<Visitor> getAllVisitors(){
+    public List<Visitor> getAllVisitor(){
         return obj.findAll();
     }
 }
