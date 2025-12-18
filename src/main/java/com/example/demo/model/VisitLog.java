@@ -46,7 +46,7 @@ public class VisitLog{
         return checkInTime;
     }
     public void setCheckInTime(String checkInTime){
-        this.checkInTime=checInTime;
+        this.checkInTime=checkInTime;
     }
     public String getCheckOutTime(){
         return checkOutTime;
@@ -66,11 +66,11 @@ public class VisitLog{
     public void setAccessGranted(Boolean accessGranted){
         this.accessGranted=accessGranted;
     }
-    public String getAlertSent(){
-        return alertSend;
+    public Boolean getAlertSent(){
+        return alertSent;
     }
-    public void setAlertSent(String alertSent){
-        this.alertSend=alertSend;
+    public void setAlertSent(Boolean alertSent){
+        this.alertSent=alertSent;
     }
     public VisitLog(Long id,String visitor,String host,String checkInTime,String checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
         this.id=id;
