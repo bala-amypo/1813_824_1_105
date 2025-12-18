@@ -1,10 +1,11 @@
 package com.example.demo.service;
 import jakarta.persistence.service;
 import com.example.demo.model.Visitor;
+import java.util.List;
 @Service
 public interface VisitorService{
-  public Visitor createVisitor(Visitor visitor);
+ Visitor createVisitor(Visitor visitor);
 
- public Visitor getVisitor(Long id);
- public Visitor getAllVisitor();
+ Visitor getVisitor(Long id);
+ List<Visitor> getAllVisitor();
 }
