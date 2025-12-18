@@ -5,4 +5,10 @@ import com.example.demo.service.VisitorService;
 import org.springframework.stereotype.Service;
 import com.example.demo.repository.Visitorrepository;
 import com.example.demo.model.Visitor;
-import org.springframe
+import org.springframework.beans.factory.annotation.Autowired;
+@Service
+public interface Visitorimpl implements VisitorService{
+    @Autowired
+    Visitorrepository obj;
+    
+}
