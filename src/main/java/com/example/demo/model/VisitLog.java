@@ -4,6 +4,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
+
+import java.time.LocalTimeDate;
+
 @Entity
 public class VisitLog{
     @Id
@@ -73,7 +76,7 @@ public class VisitLog{
     public void setAlertSent(Boolean alertSent){
         this.alertSent=alertSent;
     }
-    public VisitLog(Long id,String visitor,String host,String checkInTime,String checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
+    public VisitLog(Long id,String visitor,String host,LocalDateTime checkInTime,LocalTimeDate checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
         this.id=id;
         this.visitor=visitor;
         this.host=host;
