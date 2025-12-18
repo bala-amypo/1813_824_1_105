@@ -3,7 +3,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 @Entity
 public class User{
+    @Id
     private Long id;
+    @Column(unique=true)
     private String username;
     private String email;
     private String role;
@@ -30,7 +32,30 @@ public class User{
     public String getPassword(){
         return password;
     }
-    public void setPassword(String username){
+    public void setPassword(String password){
+        this.password=password;
+    }
+    public String getRole(){
+        return role;
+    }
+    public void setRole(String role){
+        this.role=role;
+    }
+    public LocalDateTime getCreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(LocalDateTime createAt){
+        this.createAt=createAt;
+    }
+    public User(Long id,String username,String email,String password,String role,LocalDateTime createdAt){
+        this.id=id;
         this.username=username;
+        this.email=email;
+        this.password=password;
+        this.role=role;
+        this.createAt=createAt;
+    }
+    public User(){
+
     }
 }
