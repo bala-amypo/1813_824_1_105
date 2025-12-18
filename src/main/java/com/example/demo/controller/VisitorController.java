@@ -17,11 +17,11 @@ public class VisitorController{
     public Visitor Visitorcontroller(@RequestBody Visitor visitor){
         return obj.createVisitor(visitor);
     }
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public Visitor Visitorcontr(@PathVariable Long id){
         return obj.getVisitor(id);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/")
     public List<Visitor> getVisitor(){
         return obj.getAllVisitor();
     }
