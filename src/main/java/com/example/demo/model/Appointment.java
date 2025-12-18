@@ -43,7 +43,17 @@ public class Appointment{
     public String setStatus(){
         this.status=status;
     }
-    public Appointment(Long id,String visitor,String host,String appointmentDate,String)
+    public Appointment(Long id,String visitor,String host,String appointmentDate,String purpose,String status){
+        this.id=id;
+        this.visitor=visitor;
+        this.host=host;
+        this.appointmentDate=appointmentDate;
+        this.purpose=purpose;
+        this.status=status;
+    }
+    public Appointment(){
+        
+    }
     
 
 }
