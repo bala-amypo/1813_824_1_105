@@ -44,10 +44,18 @@ public class VisitLog{
     public void setPurpose(String purpose){
         this.purpose=purpose;
     }
-    public String getFullName(){
-        return fullName;
+    public Boolean getAccessGranted(){
+        return accessGranted;
     }
-    public void setFullName(String fullName){
-        this.fullName=fullName;
+    public void setAccessGranted(Boolean accessGranted){
+        this.accessGranted=accessGranted;
+    }
+    public String getAlertSent(){
+        return alertSend;
+    }
+    public void setAlertSent(String alertSent){
+        this.alertSend=alertSend;
+    }
+    public 
 
 }
