@@ -77,7 +77,7 @@ public class VisitLog{
         this.visitor=visitor;
         this.host=host;
         this.checkInTime=checkInTime;
-        this.checkOutTime=vheckOutTime;
+        this.checkOutTime=checkOutTime;
         this.accessGranted=accessGranted;
         this.alertSent=alertSent;
     }
