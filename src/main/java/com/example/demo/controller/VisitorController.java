@@ -17,5 +17,4 @@ public class VisitorController{
     public Visitor VisitorController(@RequestBody Visitor visitor){
         return obj.
     }
-    public Visitor Visitor
 }
