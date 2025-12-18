@@ -21,31 +21,31 @@ public class Appointment{
     public String getVisitor(){
         return visitor;
     }
-    public String setVisitor(){
+    public void setVisitor(){
         this.visitor=visitor;
     }
     public String getHost(){
         return host;
     }
-    public String setHost(){
+    public void setHost(){
         this.host=host;
     }
     public String getAppointmentDate(){
         return appointmentDate;
     }
-    public String setAppointmentDate(){
+    public void setAppointmentDate(){
         this.appointmentDate=appointmentDate;
     }
     public String getPurpose(){
         return purpose;
     }
-    public String setPurpose(){
+    public void setPurpose(){
         this.purpose=purpose;
     }
     public String getStatus(){
         return status;
     }
-    public String setStatus(){
+    public void setStatus(){
         this.status=status;
     }
     public Appointment(Long id,String visitor,String host,String appointmentDate,String purpose,String status){
