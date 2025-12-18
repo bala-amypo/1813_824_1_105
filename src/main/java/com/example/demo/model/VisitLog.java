@@ -17,7 +17,37 @@ public class VisitLog{
     public String getVisitor(){
         return visitor;
     }
-    public void setVisitor(String fullName){
+    public void setVisitor(String visitor){
+        this.visitor=visitor;
+    }
+    public String getHost(){
+        return host;
+    }
+    public void setHost(String host){
+        this.host=host;
+    }
+    public String getCheckInTime(){
+        return checkInTime;
+    }
+    public void setCheckInTime(String checkInTime){
+        this.checkInTime=checInTime;
+    }
+    public String getCheckOutTime(){
+        return checkOutTime;
+    }
+    public void setCheckOutTime(String fullName){
+        this.checkOutTime=checkOutTime;
+    }
+    public String getPurpose(){
+        return purpose;
+    }
+    public void setPurpose(String purpose){
+        this.purpose=purpose;
+    }
+    public String getFullName(){
+        return fullName;
+    }
+    public void setFullName(String fullName){
         this.fullName=fullName;
 
 }
