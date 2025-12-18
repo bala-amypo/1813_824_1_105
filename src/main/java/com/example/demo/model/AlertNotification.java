@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import java.time.LocalDateTime;
 @Entity
 public class AlertNotification{
     @Id
@@ -12,6 +13,12 @@ public class AlertNotification{
     private String sentTo;
     private String alertMessage;
     private LocalDateTime sentAt;
+    @PrePersist
+    public void prepersist(){
+        if(sentAt==null){
+            sentAt=LocalDateTime
+        }
+    }
 
     public Long getId(){
         return id;
@@ -43,7 +50,16 @@ public class AlertNotification{
     public void setSentAt(String sentAt){
         this.sentAt=sentAt;
     }
-    public AlertNotification(Long id,String visitLog,String sentTo,String alertMessage,String)
+    public AlertNotification(Long id,String visitLog,String sentTo,String alertMessage,LocalDateTime sentAt){
+        this.id=id;
+        this.visitLog=visitLog;
+        this.sentTo=sentTo;
+        this.alertMessage=alertMessage;
+        this.sentAt=sentAt;
+    }
+    public AlertNotification(){
+
+    }
     
     
     
