@@ -10,5 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public interface Visitorimpl implements VisitorService{
     @Autowired
     Visitorrepository obj;
-    
+    public Visitor createVisitor(Visitor visitor){
+        return obj.save(visitor);
+    }
+    public Visitor getVisitor(Long id)
 }
