@@ -3,11 +3,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.PrePersist;
 import java.time.LocalDateTime;
 @Entity
 public class AlertNotification{
     @Id
-    @GeneratedValue(strategy.GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String visitLog;
     private String sentTo;
@@ -16,7 +17,7 @@ public class AlertNotification{
     @PrePersist
     public void prepersist(){
         if(sentAt==null){
-            sentAt=LocalDateTime
+            sentAt=LocalDateTime.now();
         }
     }
 
@@ -47,7 +48,7 @@ public class AlertNotification{
     public LocalDateTime getSentAt(){
         return sentAt;
     }
-    public void setSentAt(String sentAt){
+    public void setSentAt(LocalDateTime sentAt){
         this.sentAt=sentAt;
     }
     public AlertNotification(Long id,String visitLog,String sentTo,String alertMessage,LocalDateTime sentAt){
