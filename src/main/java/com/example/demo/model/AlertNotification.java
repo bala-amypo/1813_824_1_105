@@ -7,6 +7,7 @@ public class AlertNotification{
     private String sentTo;
     private String alertMessage;
     private LocalDateTime sentAt;
+    
 
 
 }
