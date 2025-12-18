@@ -13,4 +13,9 @@ import com.example.demo.service.VisitorService;
 public class VisitorController{
     @Autowired
     VisitorService obj;
+    @PostMapping("/")
+    public Visitor VisitorController(@RequestBody Visitor visitor){
+        return obj.
+    }
+    public Visitor Visitor
 }
