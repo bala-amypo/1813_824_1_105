@@ -1,10 +1,12 @@
 package com.example.demo.model;
+@Entity
 public class VisitLog{
+    @Id
     private Long id;
     private String visitor;
     private String host;
-    private String checkInTime;
-    private String checkOutTime;
+    private LocalDateTime checkInTime;
+    private LocalDateTime checkOutTime;
     private String purpose;
     private Boolean accessGranted;
     private Boolean alertSent;
@@ -66,7 +68,7 @@ public class VisitLog{
         this.alertSent=alertSent;
     }
     public VisitLog(){
-        
+
     }
 
 }
