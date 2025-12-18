@@ -43,16 +43,16 @@ public class VisitLog{
     public void setHost(String host){
         this.host=host;
     }
-    public String getCheckInTime(){
+    public LocalDateTime getCheckInTime(){
         return checkInTime;
     }
     public void setCheckInTime(LocalDateTime checkInTime){
         this.checkInTime=checkInTime;
     }
-    public String getCheckOutTime(){
+    public LocalDateTime getCheckOutTime(){
         return checkOutTime;
     }
-    public void setCheckOutTime(LocalDateTime fullName){
+    public void setCheckOutTime(LocalDateTime checkOutTime){
         this.checkOutTime=checkOutTime;
     }
     public String getPurpose(){
