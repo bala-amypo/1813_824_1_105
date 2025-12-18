@@ -7,7 +7,7 @@ import com.example.demo.repository.Visitorrepository;
 import com.example.demo.model.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public interface Visitorimpl implements VisitorService{
+public interface Visitorimpl implements VisitorService {
     @Autowired
     Visitorrepository obj;
     public Visitor createVisitor(Visitor visitor){
