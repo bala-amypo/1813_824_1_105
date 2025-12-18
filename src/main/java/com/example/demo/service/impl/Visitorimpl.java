@@ -13,5 +13,10 @@ public interface Visitorimpl implements VisitorService{
     public Visitor createVisitor(Visitor visitor){
         return obj.save(visitor);
     }
-    public Visitor getVisitor(Long id)
+    public Visitor getVisitor(Long id){
+      return obj.findById(id);
+    }
+    public List<Visitor> getAllVisitors(){
+        return obj.findAll();
+    }
 }
