@@ -5,7 +5,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 
-import java.time.LocalTimeDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class VisitLog{
