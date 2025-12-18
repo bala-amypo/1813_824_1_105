@@ -21,7 +21,7 @@ public class VisitLog{
             checkInTime=LocalDateTime.now();
         }
         if(alertSent==null){
-            alertSent=false
+            alertSent=false;
         }
     }
     public Long getId(){
