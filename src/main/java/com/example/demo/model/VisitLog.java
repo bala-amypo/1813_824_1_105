@@ -56,6 +56,17 @@ public class VisitLog{
     public void setAlertSent(String alertSent){
         this.alertSend=alertSend;
     }
-    public 
+    public VisitLog(Long id,String visitor,String host,String checkInTime,String checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
+        this.id=id;
+        this.visitor=visitor;
+        this.host=host;
+        this.checkInTime=checkInTime;
+        this.checkOutTime=vheckOutTime;
+        this.accessGranted=accessGranted;
+        this.alertSent=alertSent;
+    }
+    public VisitLog(){
+        
+    }
 
 }
