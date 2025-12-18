@@ -13,7 +13,7 @@ public class Visitorimpl implements VisitorService {
         return obj.save(visitor);
     }
     public Visitor getVisitor(Long id){
-      return obj.findById(id).orEl;
+      return obj.findById(id).orElse(null);
     }
     public List<Visitor> getAllVisitor(){
         return obj.findAll();
