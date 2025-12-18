@@ -1,5 +1,5 @@
 package com.example.demo.service;
-import jakarta.persistence.service;
+import jakarta.persistence.Service;
 import com.example.demo.model.Visitor;
 import java.util.List;
 @Service
