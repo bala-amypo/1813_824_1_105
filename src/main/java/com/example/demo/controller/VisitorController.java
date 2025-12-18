@@ -15,6 +15,6 @@ public class VisitorController{
     VisitorService obj;
     @PostMapping("/")
     public Visitor VisitorController(@RequestBody Visitor visitor){
-        return obj.
+        return obj.createVisitor(visitor);
     }
 }
