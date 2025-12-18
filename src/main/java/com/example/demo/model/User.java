@@ -1,7 +1,9 @@
-ppackage com.example.demo.model;
+package com.example.demo.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Column;
+
+import java.time.LocalDateTime;
 @Entity
 public class User{
     @Id
@@ -49,7 +51,7 @@ public class User{
         return createdAt;
     }
     public void setCreatedAt(LocalDateTime createAt){
-        this.createAt=createAt;
+        this.createdAt=createdAt;
     }
     public User(Long id,String username,String email,String password,String role,LocalDateTime createdAt){
         this.id=id;
@@ -57,7 +59,7 @@ public class User{
         this.email=email;
         this.password=password;
         this.role=role;
-        this.createAt=createAt;
+        this.createdAt=createdAt;
     }
     public User(){
 
