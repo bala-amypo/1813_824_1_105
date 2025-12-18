@@ -17,4 +17,8 @@ public class VisitorController{
     public Visitor Visitorcontroller(@RequestBody Visitor visitor){
         return obj.createVisitor(visitor);
     }
+    public Visitor Visitorcontr(@PathVariable Long id){
+        return obj.getVisitor(id);
+    }
+    List<Visitor> getAllVisitor();
 }
