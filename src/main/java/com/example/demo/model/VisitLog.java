@@ -76,7 +76,7 @@ public class VisitLog{
     public void setAlertSent(Boolean alertSent){
         this.alertSent=alertSent;
     }
-    public VisitLog(Long id,String visitor,String host,LocalDateTime checkInTime,LocalTimeDate checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
+    public VisitLog(Long id,String visitor,String host,LocalDateTime checkInTime,LocalDateTime checkOutTime,String purpose,Boolean accessGranted,Boolean alertSent){
         this.id=id;
         this.visitor=visitor;
         this.host=host;
