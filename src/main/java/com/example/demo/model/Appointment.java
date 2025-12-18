@@ -4,10 +4,33 @@ public class Appointment{
     private Long id;
     private String visitor;
     private String host;
-    
     private String appointmentDate;
     private String purpose;
     private String status;
+    public Long getId(){
+        return id;
+    }
+    public void setId(Long id){
+        this.id=id;
+    }
+    public String getVisitor(){
+        return visitor;
+    }
+    public String setVisitor(){
+        this.visitor=visitor;
+    }
+    public String getHost(){
+        return host;
+    }
+    public String setHost(){
+        this.host=host;
+    }
+    public String getAppointmentDate(){
+        return appointmentDate;
+    }
+    public String setHost(){
+        this.host=host;
+    }
     
 
 }
