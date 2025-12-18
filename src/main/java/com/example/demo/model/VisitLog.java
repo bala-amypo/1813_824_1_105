@@ -3,6 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 @Entity
 public class VisitLog{
     @Id
@@ -15,7 +16,7 @@ public class VisitLog{
     private String purpose;
     private Boolean accessGranted;
     private Boolean alertSent;
-    @Prepersist
+    @PrePersist
     public void prepersist(){
         if(checkInTime==null){
             checkInTime=LocalDateTime.now();
@@ -45,13 +46,13 @@ public class VisitLog{
     public String getCheckInTime(){
         return checkInTime;
     }
-    public void setCheckInTime(String checkInTime){
+    public void setCheckInTime(LocalDateTime checkInTime){
         this.checkInTime=checkInTime;
     }
     public String getCheckOutTime(){
         return checkOutTime;
     }
-    public void setCheckOutTime(String fullName){
+    public void setCheckOutTime(LocalDateTime fullName){
         this.checkOutTime=checkOutTime;
     }
     public String getPurpose(){
