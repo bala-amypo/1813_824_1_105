@@ -1,9 +1,14 @@
 package com.example.demo.model;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
+@Entity
 public class Appointment{
     @Id
     private Long id;
     private String visitor;
     private String host;
+    @NotNull(message="past date can't be valid")
     private String appointmentDate;
     private String purpose;
     private String status;
@@ -52,7 +57,7 @@ public class Appointment{
         this.status=status;
     }
     public Appointment(){
-        
+
     }
     
 
