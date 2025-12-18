@@ -1,4 +1,5 @@
-package com.example.demo.model;
+package com.example.demo.model;'
+impo'
 @Entity
 public class VisitLog{
     @Id
@@ -10,6 +11,15 @@ public class VisitLog{
     private String purpose;
     private Boolean accessGranted;
     private Boolean alertSent;
+    @Prepersist
+    public void prepersist(){
+        if(checkInTime==null){
+            checkInTime=LocalDateTime.now();
+        }
+        if(alertSent==null){
+            alertSent=false
+        }
+    }
     public Long getId(){
         return id;
     }
