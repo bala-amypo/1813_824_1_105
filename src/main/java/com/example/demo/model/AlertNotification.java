@@ -22,15 +22,30 @@ public class AlertNotification{
     public String getVisitLog(){
         return visitLog;
     }
-    public voic setVisitLog(String visitLog){
+    public void setVisitLog(String visitLog){
         this.visitLog=visitLog;
     }
     public String getSentTo(){
         return sentTo;
     }
-    public voic setSentTo(String visitLog){
-        this.visitLog=visitLog;
+    public void setSentTo(String sentTo){
+        this.sentTo=sentTo;
     }
+    public String getAlertMessage(){
+        return alertMessage;
+    }
+    public void setAlertMessage(String alertMessage){
+        this.alertMessage=alertMessage;
+    }
+    public LocalDateTime getSentAt(){
+        return sentAt;
+    }
+    public void setSentAt(String sentAt){
+        this.sentAt=sentAt;
+    }
+    public AlertNotification(Long id,String visitLog,String sentTo,String alertMessage,String)
+    
+    
     
     
 
