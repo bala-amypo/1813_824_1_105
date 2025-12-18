@@ -28,9 +28,22 @@ public class Appointment{
     public String getAppointmentDate(){
         return appointmentDate;
     }
-    public String setHost(){
-        this.host=host;
+    public String setAppointmentDate(){
+        this.appointmentDate=appointmentDate;
     }
+    public String getPurpose(){
+        return purpose;
+    }
+    public String setPurpose(){
+        this.purpose=purpose;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public String setStatus(){
+        this.status=status;
+    }
+    public Appointment(Long id,String visitor,String host,String appointmentDate,String)
     
 
 }
