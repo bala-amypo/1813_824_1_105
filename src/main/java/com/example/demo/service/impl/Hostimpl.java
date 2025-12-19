@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 public class  Hostimpl extends HostService{
     @Autowired
-    
+    public Host createHost(Host host){
+        
+    }
 }
