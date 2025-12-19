@@ -13,5 +13,18 @@ import java.util.List;
 public class Hostcontroller{
     @Autowired
     HostService obj;
-    
+    @PostMapping("/")
+    public Host Hostcontroller(@RequestBody Host host){
+        return obj.createHost(host);
+    }
+    @GetMapping("/{id}")
+    public Host Hostcontr(@PathVariable Long id){
+        return obj.getVisitor(id);
+    }
+    @GetMapping("/")
+    public List<Visitor> getVisitor(){
+        return obj.getAllVisitor();
+    }
+
+
 }
