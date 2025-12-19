@@ -5,6 +5,6 @@ import com.example.demo.model.Host;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-public interface HostService{
-    
+public class  Hostimpl extends HostService{
+    @Autowiredh
 }
