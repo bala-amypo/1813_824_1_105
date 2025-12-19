@@ -19,11 +19,11 @@ public class Hostcontroller{
     }
     @GetMapping("/{id}")
     public Host Hostcontr(@PathVariable Long id){
-        return obj.getVisitor(id);
+        return obj.getHost(id);
     }
     @GetMapping("/")
-    public List<Visitor> getVisitor(){
-        return obj.getAllVisitor();
+    public List<Host> getHost(){
+        return obj.getAllHost();
     }
 
 
