@@ -6,5 +6,8 @@ import com.example.demo.service.AppointmentService;
 @Service
 public class Appointmentimpl implements AppointmentService{
     @Autowired
-    
+    @Appointmentrepository obj;
+    public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
+        return obj
+    }
 }
