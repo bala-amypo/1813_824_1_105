@@ -4,5 +4,5 @@ import java.util.List;
 public interface HostService{
     Host createHost(Host host);
     Host getHost(Long id);
-    Host getAllHosts();
+    List<Host> getAllHost();
 }
