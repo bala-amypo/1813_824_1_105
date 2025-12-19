@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.model.Host;
 import java.util.List;
 @RestController
+@RequestMapping("/hosts")
 public class HostController{
     @Autowired
     HostService obj;
