@@ -1,7 +1,6 @@
 package com.example.demo.service;
-import jakarta.persistence.service;
 import com.example.demo.model.Host;
-@Service
+import java.util.List;
 public interface HostService{
     Host createHost(Host host);
     Host getHost(Long id);
