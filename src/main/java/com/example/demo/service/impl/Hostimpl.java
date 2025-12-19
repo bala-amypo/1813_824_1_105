@@ -9,7 +9,7 @@ public class  Hostimpl extends HostService{
     @Autowired
     Hostrepository obj;
     public Host createHost(Host host){
-      return obj.save(Host);
+      return obj.save(host);
     }
     public Host getHost(Long id){
         return obj.findById(id).orElse(null);
