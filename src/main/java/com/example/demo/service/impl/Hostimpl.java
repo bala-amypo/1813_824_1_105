@@ -14,7 +14,7 @@ public class  Hostimpl extends HostService{
     public Host getHost(Long id){
         return obj.findById(id).orElse(null);
     }
-    public Host getAllHosts(){
+    public List<Host> getAllHosts{
         return obj.findAll();
     }
 }
