@@ -19,11 +19,11 @@ public class AppointmentController{
     }
     @GetMapping("/host/{hostId}")
     public List<Appointment> hello(@PathVariable Long hostId){
-        return obj.getAppointmentForHost(hostId);
+        return obj.getAppointmentsForHost(hostId);
     }
     @GetMapping("/visitor/{visitorId}")
     public List<Appointment> hello1(@PathVariable Long visitorId){
-        return obj.getAppointmentForVisitor(visitorId);
+        return obj.getAppointmentsForVisitor(visitorId);
     }
     @GetMapping("/{id}")
     public Appointment Appoint(@PathVariable Long id){
