@@ -21,13 +21,13 @@ public class Appointment{
     public String getVisitor(){
         return visitor;
     }
-    public void setVisitor(){
+    public void setVisitor(String visitor){
         this.visitor=visitor;
     }
     public String getHost(){
         return host;
     }
-    public void setHost(){
+    public void setHost(String host){
         this.host=host;
     }
     public String getAppointmentDate(){
