@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class AppointmentController{
+    @Autowired
+    AppointmenService obj;
     @PostMapping
-    public Appointment Appoint(Long visitorId,Appointment appointment){
-
+    public Appointment Appoint(@RequestBody Appointment appointment){
+     return obj.createAppointment(appointment);
     }
+    
 }
