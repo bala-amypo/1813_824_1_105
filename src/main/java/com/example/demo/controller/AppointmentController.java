@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class AppointmentController{
     @Autowired
     AppointmentService obj;
-    @PostMapping
-    public Appointment Appoint(@RequestBody Appointment appointment){
+    @PostMapping("/{visitorId}/{hostId}")
+    public Appointment Appoint(@PathVariable Long visitorId@RequestBody Appointment appointment){
      return obj.createAppointment(appointment);
     }
     @
