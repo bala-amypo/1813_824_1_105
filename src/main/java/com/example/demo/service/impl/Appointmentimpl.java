@@ -17,11 +17,11 @@ public class Appointmentimpl implements AppointmentService{
     public Appointment getAppointment(Long id){
         return obj.findById(id).orElse(null);
     }
-    public List<Appointment> getAppointmentForHost(Long hostId){
+    public List<Appointment> getAppointmentsForHost(Long hostId){
         return obj.findByHostId(hostId);
 
     }
-    public List<Appointment> getAppointmentForVisitor(Long visitorId){
+    public List<Appointment> getAppointmentsForVisitor(Long visitorId){
         return obj.findByVisitorId(visitorId);
     }
 }
