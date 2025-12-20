@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 public class AppointmentController{
     @Autowired
-    AppointmenService obj;
+    AppointmentService obj;
     @PostMapping
     public Appointment Appoint(@RequestBody Appointment appointment){
      return obj.createAppointment(appointment);
     }
-    
+    @
 }
