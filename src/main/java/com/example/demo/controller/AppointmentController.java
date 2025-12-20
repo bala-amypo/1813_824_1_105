@@ -15,7 +15,7 @@ public class AppointmentController{
     AppointmentService obj;
     @PostMapping("/{visitorId}/{hostId}")
     public Appointment Appoint(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestBody Appointment appointment){
-     return obj.createAppointment(visitorId,hostId,appoinment);
+     return obj.createAppointment(visitorId,hostId,appointment);
     }
     @GetMapping("/host/{hostId}")
     public List<Appointment> hello(@PathVariable Long hostId){
