@@ -13,8 +13,11 @@ public class AppointmentController{
     @Autowired
     AppointmentService obj;
     @PostMapping("/{visitorId}/{hostId}")
-    public Appointment Appoint(@PathVariable Long visitorId@RequestBody Appointment appointment){
-     return obj.createAppointment(appointment);
+    public Appointment Appoint(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestBody Appointment appointment){
+     return obj.createAppointment(appointment,visitorId.hostId);
     }
-    @
+    @GetMapping("/host/{hostId}")
+    public List<Appointment> hello(@PathVariable Long visitorId){
+        return obj.
+    }
 }
