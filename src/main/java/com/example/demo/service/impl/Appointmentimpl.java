@@ -10,18 +10,18 @@ public class Appointmentimpl implements AppointmentService{
     @Autowired
     Appointmentrepository obj;
     public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
-        appointment.setVisitor(visitorId);
-        appointment.setHost(hostId);
+        appointment.setVisitor(visitorId.toString());
+        appointment.setHost(hostId.toString());
         return obj.save(appointment);
     }
     public Appointment getAppointment(Long id){
         return obj.findById(id).orElse(null);
     }
     public List<Appointment> getAppointmentsForHost(Long hostId){
-        return obj.findByHost(hostId);
+        return obj.findByHost(hostId.toString());
 
     }
     public List<Appointment> getAppointmentsForVisitor(Long visitorId){
-        return obj.findByVisitor(visitorId);
+        return obj.findByVisitor(visitorId.toString());
     }
 }
