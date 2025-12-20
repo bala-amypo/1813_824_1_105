@@ -10,7 +10,7 @@ public class Appointmentimpl implements AppointmentService{
     @Autowired
     Appointmentrepository obj;
     public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
-        appointment.setVisitorId(visitorId);
+        appointment.VisitorId(visitorId);
         appointment.setHostId(hostId);
         return obj.save(appointment);
     }
