@@ -11,6 +11,12 @@ public class Appointmentimpl implements AppointmentService{
         return obj.save()
     }
     public Appointment createAppointment(Long id){
-        return obj.
+        return obj.findByTd(id).orElse(null);
+    }
+    public Appointment getAppointmentForHost(Long hostId){
+
+    }
+    public Appointment getAppointmentForVisitor(Long VisitorId){
+        
     }
 }
