@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public class Appointmentimpl implements AppointmentService{
     @Autowired
-    @Appointmentrepository obj;
+    Appointmentrepository obj;
     public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
         appointment.setVisitorId(visitorId);
         appointment.setHostId(hostId);
@@ -21,7 +21,7 @@ public class Appointmentimpl implements AppointmentService{
         return obj.findByHostId(hostId);
 
     }
-    public List<Appointment> getAppointmentForVisitor(Long VisitorId){
+    public List<Appointment> getAppointmentForVisitor(Long visitorId){
         return obj.findByVisitorId(visitorId);
     }
 }
