@@ -11,7 +11,7 @@ public class Appointmentimpl implements AppointmentService{
     Appointmentrepository obj;
     public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
         appointment.VisitorId(visitorId);
-        appointment.setHostId(hostId);
+        appointment.HostId(hostId);
         return obj.save(appointment);
     }
     public Appointment getAppointment(Long id){
