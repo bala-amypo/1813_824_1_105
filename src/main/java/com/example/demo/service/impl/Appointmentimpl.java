@@ -3,6 +3,7 @@ import com.example.demo.controller.AppointmentController;
 import com.example.demo.model.Appointment;
 import org.springframework.stereotype.Service;
 import com.example.demo.service.AppointmentService;
+import java.util.List;
 @Service
 public class Appointmentimpl implements AppointmentService{
     @Autowired
@@ -10,15 +11,16 @@ public class Appointmentimpl implements AppointmentService{
     public Appointment createAppointment(Long visitorId,Long hostId,Appointment appointment){
         appointment.setVisitorId(visitorId);
         appointment.setHostId(hostId);
-        return obj.save()
+        return obj.save(appointment);
     }
-    public Appointment createAppointment(Long id){
+    public Appointment getAppointment(Long id){
         return obj.findByTd(id).orElse(null);
     }
-    public Appointment getAppointmentForHost(Long hostId){
+    public List<Appointment> getAppointmentForHost(Long hostId){
+        return obj.findByHostId(hostId);
 
     }
-    public Appointment getAppointmentForVisitor(Long VisitorId){
-        
+    public List<Appointment> getAppointmentForVisitor(Long VisitorId){
+        return obj.findByVisitorId(visitorId);
     }
 }
