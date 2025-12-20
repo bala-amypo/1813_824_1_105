@@ -15,7 +15,7 @@ public class Appointmentimpl implements AppointmentService{
         return obj.save(appointment);
     }
     public Appointment getAppointment(Long id){
-        return obj.findByTd(id).orElse(null);
+        return obj.findById(id).orElse(null);
     }
     public List<Appointment> getAppointmentForHost(Long hostId){
         return obj.findByHostId(hostId);
