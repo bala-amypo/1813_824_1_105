@@ -27,12 +27,9 @@ public class VisitLogController{
     public List<VisitLog> hello1(){
         return obj.getActiveVisits();
     }
-    @GetMapping("/")
-    public List<Appointment> hello1(@PathVariable Long visitorId){
-        return obj.getAppointmentsForVisitor(visitorId);
-    }
+    
     @GetMapping("/{id}")
-    public Appointment Appoint(@PathVariable Long id){
-        return obj.getAppointment(id);
+    public VisitLog Appointg(@PathVariable Long id){
+        return obj.getVisitLog(id);
     }
 }

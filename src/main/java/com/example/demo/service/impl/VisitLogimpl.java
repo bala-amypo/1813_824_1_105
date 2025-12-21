@@ -13,12 +13,12 @@ public class VisitLogimpl implements VisitLogService{
           log.setHost(hostId.toString());
           log.setPurpose(purpose);
           log.setAccessGranted(true);
-          return obj.save(log;)
+          return obj.save(log);
     }
     public VisitLog checkOutVisitor(Long visitLogId){
         Visitor log=obj.findById(VisitLogId).orElse(null);
         log.setCheckOutTime(LocalDateTime.now());
-        return obj.save(log)
+        return obj.save(log);
     }
     public List<VisitLog> getActiveVisits(){
         return obj.findByCheckOutTimeIsNull();
