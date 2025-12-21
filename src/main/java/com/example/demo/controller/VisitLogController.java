@@ -19,12 +19,15 @@ public class VisitLogController{
     public VisitLog hello(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestParam String purpose){
      return obj.checkInVisitor(visitorId,hostId,purpose);
     }
-    @PostMapping("/checkout/{}")
-    @GetMapping("/cactive")
+    @PostMapping("/checkout/{visitLogId}")
+    public VisitLog checkOutVisitor(@PathVariable Long visitLogId){
+    return obj.checkOutVisitor(visitLogId);
+    }
+    @GetMapping("/active")
     public List<VisitLog> hello1(){
         return obj.getActiveVisits();
     }
-    @GetMapping("/visitor/{visitorId}")
+    @GetMapping("/")
     public List<Appointment> hello1(@PathVariable Long visitorId){
         return obj.getAppointmentsForVisitor(visitorId);
     }
