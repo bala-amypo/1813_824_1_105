@@ -17,11 +17,12 @@ public class VisitLogController{
     VisitLogService obj;
     @PostMapping("/checkin/{visitorId}/{hostId}")
     public VisitLog hello(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestParam String purpose){
-     return obj.createAppointment(visitorId,hostId,appointment);
+     return obj.checkInVisitor(visitorId,hostId,purpose);
     }
-    @GetMapping("/host/{hostId}")
-    public List<Appointment> hello(@PathVariable Long hostId){
-        return obj.getAppointmentsForHost(hostId);
+    @PostMapping("/checkout/{}")
+    @GetMapping("/cactive")
+    public List<VisitLog> hello1(){
+        return obj.getActiveVisits();
     }
     @GetMapping("/visitor/{visitorId}")
     public List<Appointment> hello1(@PathVariable Long visitorId){
