@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @RestController
-@RequestMapping("/visitLog")
+@RequestMapping("/api/Visits")
 public class VisitLogController{
     @Autowired
     VisitLogService obj;
-    @PostMapping("/{visitorId}/{hostId}")
-    public Appointment Appoint(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestBody Appointment appointment){
+    @PostMapping("/checkin/{visitorId}/{hostId}")
+    public VisitLog hello(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestParam String purpose){
      return obj.createAppointment(visitorId,hostId,appointment);
     }
     @GetMapping("/host/{hostId}")
