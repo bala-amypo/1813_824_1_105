@@ -1,4 +1,4 @@
-package com.example.demo.impl;
+package com.example.demo.service.impl;
 import com.example.demo.repository.VisitLogrepository;
 import com.example.demo.service.VisitLogService;
 import org.springframework.stereotype.Service;
