@@ -24,7 +24,7 @@ public class VisitLogimpl implements VisitLogService{
         return obj.findByCheckOutTimeIsNull();
     }
     public VisitLog getVisitorLog(Long id){
-        return obj.findByI(id).orElse(null);
+        return obj.findById(id).orElse(null);
     }
 
 }
