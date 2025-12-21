@@ -4,8 +4,9 @@ import com.example.demo.service.VisitLogService;
 import org.springframework.streotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public interface VisitLogrepositoryService{
+public class VisitLogServiceimpl implements Visit{
     @Autowired
-    Vis
+    VisitLogrepository obj;
+    public class
 
 }
