@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class VisitLogimpl implements VisitLogService{
     @Autowired
     VisitLogrepository obj;
-    public VisitorLog checkInVisitor(Long visitorId.Long hostId,String purpose){
-        
+    public VisitorLog checkInVisitor(Long visitorId,Long hostId,String purpose){
+          VisitLog log=new Visitor();
+          log.setVisitor(visitorId.)
     }
 
 }
