@@ -17,7 +17,14 @@ public class VisitLogimpl implements VisitLogService{
     }
     public VisitLog checkOutVisitor(Long visitLogId){
         Visitor log=obj.findById(VisitLogId).orElse(null);
-        log.setCheckOutTime(Local)
+        log.setCheckOutTime(LocalDateTime.now());
+        return obj.save(log)
+    }
+    public List<VisitLog> getActiveVisits(){
+        return obj.findByCheckOutTimeIsNull();
+    }
+    public VisitLog getVisitorLog(Long id){
+        return obj.findByI(id).orElse(null);
     }
 
 }
