@@ -4,9 +4,11 @@ import com.example.demo.service.VisitLogService;
 import org.springframework.streotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class VisitLogServiceimpl implements Visit{
+public class VisitLogimpl implements VisitLogService{
     @Autowired
     VisitLogrepository obj;
-    public class
+    public VisitorLog checkInVisitor(Long visitorId.Long hostId,String purpose){
+        
+    }
 
 }
