@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import com.example.demo.model.AlertNotification;
 import com.example.demo.service.AlertNotificationService;
 @RestController
-@RequestMapping("/api/alerts")
+@RequestMapping("alerts")
 public class AlertNotificationController {
     @Autowired
     private AlertNotificationService service;

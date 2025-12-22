@@ -19,7 +19,7 @@ public class AlertNotificationimpl implements AlertNotificationService {
 
         AlertNotification alert = new AlertNotification();
 
-        alert.setVisitLog(String.valueOf(visitLogId)); // convert Long → String
+        alert.setVisitLog(String.valueOf(visitLogId));
         alert.setAlertMessage("New alert");
         alert.setSentAt(LocalDateTime.now());
 
@@ -33,7 +33,7 @@ public class AlertNotificationimpl implements AlertNotificationService {
     }
 
     @Override
-    public List<AlertNotification> getAllAlert() {
+    public List<AlertNotification> getAllAlerts() {
         return obj.findAll();
     }
 }
