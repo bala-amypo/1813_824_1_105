@@ -24,7 +24,7 @@ public class AlertNotificationController{
     }
     @GetMapping
     public List<AlertNotification> getAllAlerts() {
-        return obj.getAllAlerts();
+        return obj.getAllAlert();
     }
     
     
