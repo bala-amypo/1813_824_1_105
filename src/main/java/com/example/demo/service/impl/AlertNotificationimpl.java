@@ -10,7 +10,7 @@ public class  AlertNotificationimpl implements AlertNotificationService{
     @Autowired
     AlertNotificationrepository obj;
     public AlertNotification sendAlert(Long visitLogId){
-      return obj.save(visitLogId);
+      return obj.Save(visitLogId);
     }
     public AlertNotification getAlert(Long id){
         return obj.findById(id).orElse(null);
