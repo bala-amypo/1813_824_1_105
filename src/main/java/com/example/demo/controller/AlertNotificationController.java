@@ -16,15 +16,15 @@ public class AlertNotificationController{
     AlertNotificationService obj;
     @PostMapping("/send/{visitLogId}")
     public AlertNotification sendAlert(@PathVariable Long visitLogId) {
-        return alertService.sendAlert(visitLogId);
+        return obj.sendAlert(visitLogId);
     }
     @GetMapping("/{id}")
     public AlertNotification getAlert(@PathVariable Long id) {
-        return alertService.getAlert(id);
+        return obj.getAlert(id);
     }
     @GetMapping
     public List<AlertNotification> getAllAlerts() {
-        return alertService.getAllAlerts();
+        return obj.getAllAlerts();
     }
     
     
