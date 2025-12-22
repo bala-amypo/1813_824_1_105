@@ -14,18 +14,20 @@ import java.util.List;
 public class AlertNotificationController{
     @Autowired
     AlertNotificationService obj;
-    @PostMapping
-    public AlertNotification Hostcontrler(@RequestBody Host host){
-        return obj.createH(host);
+    @PostMapping("/send/{visitLogId}")
+    public AlertNotification sendAlert(@PathVariable Long visitLogId) {
+        return alertService.sendAlert(visitLogId);
     }
     @GetMapping("/{id}")
-    public Host Hostcontr(@PathVariable Long id){
-        return obj.getHost(id);
+    public AlertNotification getAlert(@PathVariable Long id) {
+        return alertService.getAlert(id);
     }
     @GetMapping
-    public List<Host> getHost(){
-        return obj.getAllHost();
+    public List<AlertNotification> getAllAlerts() {
+        return alertService.getAllAlerts();
     }
+    
+    
 
 
 }
