@@ -11,7 +11,7 @@ import com.example.demo.service.AlertNotificationService;
 @Service
 public class AlertNotificationimpl implements AlertNotificationService {
     @Autowired
-    private AlertNotificationrepository obj;
+    AlertNotificationrepository obj;
     public AlertNotification sendAlert(Long visitLogId) {
         AlertNotification alert = new AlertNotification();
         alert.setVisitLogId(visitLogId);
