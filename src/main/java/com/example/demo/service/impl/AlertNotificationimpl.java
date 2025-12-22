@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class  AlertNotificationimpl implements AlertNotificationService{
     @Autowired
     AlertNotificationrepository obj;
-    public AlertNotification sendAlert(Host host){
-      return obj.save(host);
+    public AlertNotification sendAlert(Long visitLogId){
+      return obj.save(visitLogId);
     }
-    public Host getHost(Long id){
+    public AlertNotification getAlert(Long id){
         return obj.findById(id).orElse(null);
     }
-    public List<Host> getAllHost(){
+    public List<AlertNotification> getAllAlertNotification(){
         return obj.findAll();
     }
 }
