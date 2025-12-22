@@ -1,33 +1,25 @@
 package com.example.demo.controller;
-import com.example.demo.service.AlertNotificationService;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.demo.model.AlertNotification;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.example.demo.model.AlertNotification;
+import com.example.demo.service.AlertNotificationService;
 @RestController
-@RequestMapping("/alertnotification")
-public class AlertNotificationController{
+@RequestMapping("/api/alerts")
+public class AlertNotificationController {
     @Autowired
-    AlertNotificationService obj;
-    @PostMapping("/send/{visitLogId}")
-    public AlertNotification sendAlert(@PathVariable Long visitLogId) {
-        return obj.sendAlert(visitLogId);
+    private AlertNotificationService service;
+    @PostMapping
+    public AlertNotification sendAlert(
+            @RequestBody AlertNotification alert) {
+        return service.sendAlert(alert);
     }
     @GetMapping("/{id}")
     public AlertNotification getAlert(@PathVariable Long id) {
-        return obj.getAlert(id);
+        return service.getAlertById(id);
     }
     @GetMapping
     public List<AlertNotification> getAllAlerts() {
-        return obj.getAllAlert();
+        return service.getAllAlerts();
     }
-    
-    
-
-
 }
