@@ -16,7 +16,7 @@ public class AlertNotificationController {
     }
     @GetMapping("/{id}")
     public AlertNotification getAlert(@PathVariable Long id) {
-        return service.getAlertById(id);
+        return service.getAlert(id);
     }
     @GetMapping
     public List<AlertNotification> getAllAlerts() {
