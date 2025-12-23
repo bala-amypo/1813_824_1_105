@@ -7,5 +7,5 @@ public interface VisitLogService{
   VisitLog checkInVisitor(Long visitorId,Long hostId,String purpose);
    VisitLog checkOutVisitor(Long visitLogId);
  List<VisitLog> getActiveVisits();
- List<VisitLog> getVisitLog(Long id);
+  VisitLog getVisitLog(Long id);
 }
