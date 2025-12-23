@@ -12,7 +12,7 @@ public class AlertNotificationController {
     @PostMapping
     public AlertNotification sendAlert(
             @RequestBody AlertNotification alert) {
-        return service.sendAlert(alert);
+        return service.sendAlert(id);
     }
     @GetMapping("/{id}")
     public AlertNotification getAlert(@PathVariable Long id) {
