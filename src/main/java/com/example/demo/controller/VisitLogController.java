@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @RestController
-@RequestMapping("/api/Visits")
+@RequestMapping("Visits")
 public class VisitLogController{
     @Autowired
     VisitLogService obj;
