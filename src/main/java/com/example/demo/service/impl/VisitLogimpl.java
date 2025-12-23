@@ -19,7 +19,7 @@ public class VisitLogimpl implements VisitLogService{
           return obj.save(log);
     }
     public VisitLog checkOutVisitor(Long visitLogId){
-        VisitLog log=obj.findById(VisitLogId).orElse(null);
+        VisitLog log=obj.findById(visitLogId).orElse(null);
         log.setCheckOutTime(LocalDateTime.now());
         return obj.save(log);
     }
