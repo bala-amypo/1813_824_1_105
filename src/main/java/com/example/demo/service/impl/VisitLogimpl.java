@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 import com.example.demo.repository.VisitLogrepository;
-import com.example.demo.VisitLog;
+import com.example.demo.model.VisitLog;
 import java.util.List;
 import com.example.demo.service.VisitLogService;
 import org.springframework.stereotype.Service;
