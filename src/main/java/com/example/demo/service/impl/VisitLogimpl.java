@@ -11,7 +11,7 @@ public class VisitLogimpl implements VisitLogService{
     @Autowired
     VisitLogrepository obj;
     public VisitLog checkInVisitor(Long visitorId,Long hostId,String purpose){
-          VisitLog log=new Visitor();
+          VisitLogimpl log=new Visitor();
           log.setVisitor(visitorId.toString());
           log.setHost(hostId.toString());
           log.setPurpose(purpose);
