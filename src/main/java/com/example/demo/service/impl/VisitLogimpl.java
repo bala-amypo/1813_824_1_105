@@ -11,7 +11,7 @@ public class VisitLogimpl implements VisitLogService{
     @Autowired
     VisitLogrepository obj;
     public VisitLog checkInVisitor(Long visitorId,Long hostId,String purpose){
-          VisitLogimpl log=new VisitLog();
+          VisitLog log=new VisitLog();
           log.setVisitor(visitorId.toString());
           log.setHost(hostId.toString());
           log.setPurpose(purpose);
@@ -26,7 +26,7 @@ public class VisitLogimpl implements VisitLogService{
     public List<VisitLog> getActiveVisits(){
         return obj.findBycheckOutTimeIsNull();
     }
-    public VisitLog getVisitorLog(Long id){
+    public VisitLog getVisitLog(Long id){
         return obj.findById(id).orElse(null);
     }
 
