@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class VisitLogimpl implements VisitLogService{
+public class VisitLog implements VisitLogService{
     @Autowired
     VisitLogrepository obj;
     public VisitLog checkInVisitor(Long visitorId,Long hostId,String purpose){
