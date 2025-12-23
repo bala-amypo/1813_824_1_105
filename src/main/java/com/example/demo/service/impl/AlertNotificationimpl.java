@@ -12,7 +12,7 @@ import com.example.demo.service.AlertNotificationService;
 public class AlertNotificationimpl implements AlertNotificationService {
 
     @Autowired
-    private AlertNotificationRepository obj;
+    private AlertNotificationrepository obj;
 
     @Override
     public AlertNotification sendAlert(Long visitLogId) {
