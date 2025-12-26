@@ -12,11 +12,11 @@ import com.example.demo.repository.Userrepository;
 @Service
 public class Userimpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final Userrepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder =
             new BCryptPasswordEncoder();
 
-    public Userimpl(UserRepository userRepository) {
+    public Userimpl(Userrepository userRepository) {
         this.userRepository = userRepository;
     }
 
