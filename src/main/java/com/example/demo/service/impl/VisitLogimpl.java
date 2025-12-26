@@ -7,28 +7,45 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class VisitLogimpl implements VisitLogService{
-    @Autowired
-    VisitLogrepository obj;
-    public VisitLog checkInVisitor(Long visitorId,Long hostId,String purpose){
-          VisitLog log=new VisitLog();
-          log.setVisitor(visitorId.toString());
-          log.setHost(hostId.toString());
-          log.setPurpose(purpose);
-          log.setAccessGranted(true);
-          return obj.save(log);
+public class VisitLogServiceImpl {
+
+    private VisitLogRepository visitLogRepository;
+    private VisitorRepository visitorRepository;
+    private HostRepository hostRepository;
+
+    public VisitLog checkInVisitor(Long visitorId, Long hostId, String purpose) {
+        Visitor v = visitorRepository.findById(visitorId)
+                .orElseThrow(() -> new RuntimeException("Visitor not found"));
+        Host h = hostRepository.findById(hostId)
+                .orElseThrow(() -> new RuntimeException("Host not found"));
+
+        VisitLog log = new VisitLog();
+        log.setVisitor(v);
+        log.setHost(h);
+        log.setPurpose(purpose);
+        log.setCheckInTime(LocalDateTime.now());
+        log.setAccessGranted(true);
+
+        return visitLogRepository.save(log);
     }
-    public VisitLog checkOutVisitor(Long visitLogId){
-        VisitLog log=obj.findById(visitLogId).orElse(null);
+
+    public VisitLog checkOutVisitor(Long id) {
+        VisitLog log = visitLogRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("VisitLog not found"));
+
+        if (log.getCheckInTime() == null)
+            throw new IllegalStateException("Visitor not checked in");
+
         log.setCheckOutTime(LocalDateTime.now());
-        return obj.save(log);
+        return visitLogRepository.save(log);
     }
-    public List<VisitLog> getActiveVisits(){
-        return obj.findBycheckOutTimeIsNull();
-    }
+
     public VisitLog getVisitLog(Long id) {
-    return obj.findById(id).orElse(null);
-}
+        return visitLogRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("VisitLog not found"));
+    }
 
-
+    public List<VisitLog> getActiveVisits() {
+        return visitLogRepository.findByCheckOutTimeIsNull();
+    }
 }
