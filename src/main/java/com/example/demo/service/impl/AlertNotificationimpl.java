@@ -9,31 +9,37 @@ import com.example.demo.model.AlertNotification;
 import com.example.demo.repository.AlertNotificationrepository;
 import com.example.demo.service.AlertNotificationService;
 @Service
-public class AlertNotificationimpl implements AlertNotificationService {
+public class AlertNotificationServiceImpl {
 
-    @Autowired
-    private AlertNotificationrepository obj;
+    private AlertNotificationRepository alertRepository;
+    private VisitLogRepository visitLogRepository;
 
-    @Override
     public AlertNotification sendAlert(Long visitLogId) {
 
-        AlertNotification alert = new AlertNotification();
+        VisitLog log = visitLogRepository.findById(visitLogId)
+                .orElseThrow(() -> new RuntimeException("VisitLog not found"));
 
-        alert.setVisitLog(String.valueOf(visitLogId));
-        alert.setAlertMessage("New alert");
+        if (alertRepository.findByVisitLogId(visitLogId).isPresent())
+            throw new IllegalArgumentException("Alert already sent");
+
+        AlertNotification alert = new AlertNotification();
+        alert.setVisitLog(log);
+        alert.setSentTo(log.getHost().getEmail());
+        alert.setAlertMessage("Visitor arrived");
         alert.setSentAt(LocalDateTime.now());
 
-        return obj.save(alert);
+        log.setAlertSent(true);
+        visitLogRepository.save(log);
+
+        return alertRepository.save(alert);
     }
 
-    @Override
     public AlertNotification getAlert(Long id) {
-        return obj.findById(id)
+        return alertRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Alert not found"));
     }
 
-    @Override
     public List<AlertNotification> getAllAlerts() {
-        return obj.findAll();
+        return alertRepository.findAll();
     }
 }
