@@ -11,12 +11,12 @@ public class VisitLog {
     private Long id;
 
     private LocalDateTime checkInTime;
-
     private LocalDateTime checkOutTime;
 
     private Boolean accessGranted = false;
-
     private Boolean alertSent = false;
+
+    private String purpose; // <-- ADD THIS FIELD
 
     @ManyToOne
     @JoinColumn(name = "visitor_id")
@@ -29,59 +29,27 @@ public class VisitLog {
     // ------------------
     // Getters & Setters
     // ------------------
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public LocalDateTime getCheckInTime() { return checkInTime; }
+    public void setCheckInTime(LocalDateTime checkInTime) { this.checkInTime = checkInTime; }
 
-    public LocalDateTime getCheckInTime() {
-        return checkInTime;
-    }
+    public LocalDateTime getCheckOutTime() { return checkOutTime; }
+    public void setCheckOutTime(LocalDateTime checkOutTime) { this.checkOutTime = checkOutTime; }
 
-    public void setCheckInTime(LocalDateTime checkInTime) {
-        this.checkInTime = checkInTime;
-    }
+    public Boolean getAccessGranted() { return accessGranted; }
+    public void setAccessGranted(Boolean accessGranted) { this.accessGranted = accessGranted; }
 
-    public LocalDateTime getCheckOutTime() {
-        return checkOutTime;
-    }
+    public Boolean getAlertSent() { return alertSent; }
+    public void setAlertSent(Boolean alertSent) { this.alertSent = alertSent; }
 
-    public void setCheckOutTime(LocalDateTime checkOutTime) {
-        this.checkOutTime = checkOutTime;
-    }
+    public String getPurpose() { return purpose; }  // <-- Getter
+    public void setPurpose(String purpose) { this.purpose = purpose; } // <-- Setter
 
-    public Boolean getAccessGranted() {
-        return accessGranted;
-    }
+    public Visitor getVisitor() { return visitor; }
+    public void setVisitor(Visitor visitor) { this.visitor = visitor; }
 
-    public void setAccessGranted(Boolean accessGranted) {
-        this.accessGranted = accessGranted;
-    }
-
-    public Boolean getAlertSent() {
-        return alertSent;
-    }
-
-    public void setAlertSent(Boolean alertSent) {
-        this.alertSent = alertSent;
-    }
-
-    public Visitor getVisitor() {
-        return visitor;
-    }
-
-    public void setVisitor(Visitor visitor) {
-        this.visitor = visitor;
-    }
-
-    public Host getHost() {
-        return host;
-    }
-
-    public void setHost(Host host) {
-        this.host = host;
-    }
+    public Host getHost() { return host; }
+    public void setHost(Host host) { this.host = host; }
 }
