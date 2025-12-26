@@ -9,23 +9,27 @@ import com.example.demo.model.AlertNotification;
 import com.example.demo.service.AlertNotificationService;
 
 @RestController
-@RequestMapping("/alerts")
+@RequestMapping("alerts")
 public class AlertNotificationController {
 
-    @Autowired
-    private AlertNotificationService service;
+    private final AlertNotificationService alertService;
+
+    public AlertNotificationController(AlertNotificationService alertService) {
+        this.alertService = alertService;
+    }
 
     @PostMapping("/{visitLogId}")
-    public AlertNotification sendAlert(@PathVariable Long visitLogId) {
-        return service.sendAlert(visitLogId);
+    public AlertNotification send(@PathVariable Long visitLogId) {
+        return alertService.sendAlert(visitLogId);
     }
+
     @GetMapping("/{id}")
-    public AlertNotification getAlert(@PathVariable Long id) {
-        return service.getAlert(id);
+    public AlertNotification get(@PathVariable Long id) {
+        return alertService.getAlert(id);
     }
 
     @GetMapping
-    public List<AlertNotification> getAllAlerts() {
-        return service.getAllAlerts();
+    public List<AlertNotification> all() {
+        return alertService.getAllAlerts();
     }
 }
