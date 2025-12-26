@@ -11,25 +11,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @RestController
-@RequestMapping("Visits")
-public class VisitLogController{
-    @Autowired
-    VisitLogService obj;
+@RequestMapping("/api/visits")
+public class VisitLogController {
+
+    private final VisitLogService visitLogService;
+
+    public VisitLogController(VisitLogService visitLogService) {
+        this.visitLogService = visitLogService;
+    }
+
     @PostMapping("/checkin/{visitorId}/{hostId}")
-    public VisitLog hello(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestParam String purpose){
-     return obj.checkInVisitor(visitorId,hostId,purpose);
+    public VisitLog checkIn(@PathVariable Long visitorId,
+                            @PathVariable Long hostId,
+                            @RequestParam String purpose) {
+        return visitLogService.checkInVisitor(visitorId, hostId, purpose);
     }
-    @PostMapping("/checkout/{visitLogId}")
-    public VisitLog checkOutVisitor(@PathVariable Long visitLogId){
-    return obj.checkOutVisitor(visitLogId);
+
+    @PostMapping("/checkout/{id}")
+    public VisitLog checkOut(@PathVariable Long id) {
+        return visitLogService.checkOutVisitor(id);
     }
-    @GetMapping("/active")
-    public List<VisitLog> hello1(){
-        return obj.getActiveVisits();
-    }
-    
+
     @GetMapping("/{id}")
-    public VisitLog Appointg(@PathVariable Long id){
-        return obj.getVisitLog(id);
+    public VisitLog get(@PathVariable Long id) {
+        return visitLogService.getVisitLog(id);
+    }
+
+    @GetMapping("/active")
+    public List<VisitLog> active() {
+        return visitLogService.getActiveVisits();
     }
 }
