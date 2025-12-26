@@ -1,18 +1,30 @@
-// package com.example.demo.controller;
-// import com.example.demo.service.UserService;
-// import com.example.demo.model.User;
-// import org.springframework.web.bind.annotation.RequestController;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import java.util.List;
-// import org.springframework.beans.factory.annotation.Autowired;
-// @RequestController
-// @RequestMapping("/auth")
-// public class AuthController{
-//    @Autowired
-//    UserService obj;
-//    public User hello()
-// }
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.RegisterRequest;
+import com.example.demo.service.UserService;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    private final UserService userService;
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
+
+    
+    @PostMapping("/register")
+    public String register(@RequestBody RegisterRequest request) {
+        return userService.register(request);
+    }
+
+    
+    @PostMapping("/login")
+    public String login(@RequestBody AuthRequest request) {
+        return userService.login(request);
+    }
+}
