@@ -10,24 +10,34 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 @RestController
-@RequestMapping("/appointments")
-public class AppointmentController{
-    @Autowired
-    AppointmentService obj;
+@RequestMapping("/api/appointments")
+public class AppointmentController {
+
+    private final AppointmentService appointmentService;
+
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+
     @PostMapping("/{visitorId}/{hostId}")
-    public Appointment Appoint(@PathVariable Long visitorId,@PathVariable Long hostId,@RequestBody Appointment appointment){
-     return obj.createAppointment(visitorId,hostId,appointment);
+    public Appointment create(@PathVariable Long visitorId,
+                              @PathVariable Long hostId,
+                              @RequestBody Appointment appointment) {
+        return appointmentService.createAppointment(visitorId, hostId, appointment);
     }
-    @GetMapping("/host/{hostId}")
-    public List<Appointment> hello(@PathVariable Long hostId){
-        return obj.getAppointmentsForHost(hostId);
-    }
-    @GetMapping("/visitor/{visitorId}")
-    public List<Appointment> hello1(@PathVariable Long visitorId){
-        return obj.getAppointmentsForVisitor(visitorId);
-    }
+
     @GetMapping("/{id}")
-    public Appointment Appoint(@PathVariable Long id){
-        return obj.getAppointment(id);
+    public Appointment get(@PathVariable Long id) {
+        return appointmentService.getAppointment(id);
+    }
+
+    @GetMapping("/host/{hostId}")
+    public List<Appointment> byHost(@PathVariable Long hostId) {
+        return appointmentService.getAppointmentsForHost(hostId);
+    }
+
+    @GetMapping("/visitor/{visitorId}")
+    public List<Appointment> byVisitor(@PathVariable Long visitorId) {
+        return appointmentService.getAppointmentsForVisitor(visitorId);
     }
 }
