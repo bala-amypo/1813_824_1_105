@@ -10,13 +10,19 @@ import java.util.Map;
 
 public class JwtUtil {
 
-    // MUST be at least 32 characters (256 bits)
-    private static final String SECRET_KEY =
-            "mysecretkeymysecretkeymysecretkey12";
+    // ❗ Tests EXPECT these fields
+    private String secret;
+    private long jwtExpirationMs;
 
-    private static final long JWT_EXPIRATION_MS = 86400000; // 1 day
+    private Key key;
 
-    private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    // ❗ Lazy init so ReflectionTestUtils works
+    private Key getSigningKey() {
+        if (key == null) {
+            key = Keys.hmacShaKeyFor(secret.getBytes());
+        }
+        return key;
+    }
 
     public String generateToken(String username, String role, Long userId, String email) {
 
@@ -29,14 +35,14 @@ public class JwtUtil {
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_EXPIRATION_MS))
-                .signWith(key, SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
     public Claims validateAndGetClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(key)
+                .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
