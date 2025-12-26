@@ -7,8 +7,6 @@ public class Appointment {
     private LocalDate appointmentDate;
     private String purpose;
     private String status;
-    private Visitor visitor;
-    private Host host;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -21,10 +19,4 @@ public class Appointment {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
-
-    public Visitor getVisitor() { return visitor; }
-    public void setVisitor(Visitor visitor) { this.visitor = visitor; }
-
-    public Host getHost() { return host; }
-    public void setHost(Host host) { this.host = host; }
 }
