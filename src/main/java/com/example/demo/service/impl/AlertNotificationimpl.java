@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.AlertNotification;
-import com.example.demo.repository.AlertNotificationrepository;
+import com.example.demo.repository.AlertNotificationRepository;
 import com.example.demo.service.AlertNotificationService;
 @Service
 public class AlertNotificationServiceImpl {
