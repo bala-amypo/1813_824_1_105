@@ -10,22 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.model.Host;
 import java.util.List;
 @RestController
-@RequestMapping("/hosts")
-public class HostController{
-    @Autowired
-    HostService obj;
+@RequestMapping("/api/hosts")
+public class HostController {
+
+    private final HostService hostService;
+
+    public HostController(HostService hostService) {
+        this.hostService = hostService;
+    }
+
     @PostMapping
-    public Host Hostcontroller(@RequestBody Host host){
-        return obj.createHost(host);
+    public Host create(@RequestBody Host host) {
+        return hostService.createHost(host);
     }
+
     @GetMapping("/{id}")
-    public Host Hostcontr(@PathVariable Long id){
-        return obj.getHost(id);
+    public Host get(@PathVariable Long id) {
+        return hostService.getHost(id);
     }
-    @GetMapping
-    public List<Host> getHost(){
-        return obj.getAllHost();
-    }
-
-
 }
