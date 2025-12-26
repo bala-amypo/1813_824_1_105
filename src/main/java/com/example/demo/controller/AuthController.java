@@ -1,35 +1,27 @@
 package com.example.demo.controller;
 
-import com.example.demo.service.AuthService;
+import com.example.demo.model.User;
+import com.example.demo.security.JwtUtil;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AuthService authService;
-
-    public AuthController(AuthService authService) {
-        this.authService = authService;
-    }
+    private JwtUtil jwtUtil = new JwtUtil();
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/register")
-    public Map<String, String> register(@RequestBody Map<String, String> request) {
-        String token = authService.register(
-                request.get("email"),
-                request.get("password")
-        );
-        return Map.of("token", token);
+    public User register(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // In-memory user; you can connect repository here
+        return user;
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestBody Map<String, String> request) {
-        String token = authService.login(
-                request.get("email"),
-                request.get("password")
-        );
-        return Map.of("token", token);
+    public String login(@RequestBody User user) {
+        // Normally check credentials from DB; here we simulate
+        return jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId(), user.getEmail());
     }
 }

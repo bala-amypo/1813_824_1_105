@@ -1,41 +1,31 @@
 package com.example.demo.security;
 
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.stereotype.Component;
-
-import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-@Component
 public class JwtUtil {
 
-    // 256-bit (32+ chars) secret key
-    private static final String SECRET =
-            "my_super_secure_jwt_secret_key_256_bits_long!";
+    private String secret;
+    private long jwtExpirationMs;
 
-    private static final long EXPIRATION = 1000 * 60 * 60; // 1 hour
+    public String generateToken(String username, String role, Long userId, String email){
+        Map<String,Object> claims = new HashMap<>();
+        claims.put("role", role);
+        claims.put("userId", userId);
+        claims.put("email", email);
 
-    private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET.getBytes());
-    }
-
-    public String generateToken(Long userId, String email, String role) {
         return Jwts.builder()
-                .setSubject(email)
-                .claim("userId", userId)
-                .claim("role", role)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
-                .compact();
+            .setClaims(claims)
+            .setSubject(username)
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+            .signWith(SignatureAlgorithm.HS256, secret)
+            .compact();
     }
 
-    public Claims extractClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getSigningKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+    public Jws<Claims> validateAndGetClaims(String token){
+        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
     }
 }
