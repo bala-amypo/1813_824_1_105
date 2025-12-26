@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.model.VisitLog;
+import com.example.demo.repository.VisitLogRepository;
 import java.util.List;
 public interface VisitLogRepository {
     VisitLog save(VisitLog v);
