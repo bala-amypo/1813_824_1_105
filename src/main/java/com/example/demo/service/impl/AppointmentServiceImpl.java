@@ -5,6 +5,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.service.AppointmentService;
 import java.util.List;
+import java.time.LocalDate;
+import com.example.demo.model.Host;
+import com.example.demo.model.Visitor;
+import com.example.demo.repository.HostRepository;
+import com.example.demo.repository.VisitorRepository;
+
 @Service
 public class AppointmentServiceImpl {
 
