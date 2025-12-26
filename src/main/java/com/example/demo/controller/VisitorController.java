@@ -1,35 +1,35 @@
 package com.example.demo.controller;
-import java.util.List;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.model.Visitor;
+import com.example.demo.service.VisitorService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.PathVariable;
-import com.example.demo.model.Visitor;
-import org.springframework.beans.factory.annotation.Autowired;
-import com.example.demo.service.VisitorService;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/visitors")
 public class VisitorController {
 
-    private final VisitorService visitorService;
+    private VisitorService visitorService;
 
     public VisitorController(VisitorService visitorService) {
         this.visitorService = visitorService;
     }
 
-    @PostMapping
+    @PostMapping("/visitors")
     public Visitor create(@RequestBody Visitor visitor) {
         return visitorService.createVisitor(visitor);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/visitors/{id}")
     public Visitor get(@PathVariable Long id) {
         return visitorService.getVisitor(id);
     }
 
-    @GetMapping
+    @GetMapping("/visitors")
     public List<Visitor> getAll() {
         return visitorService.getAllVisitors();
     }
