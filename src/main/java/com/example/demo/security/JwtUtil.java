@@ -10,6 +10,7 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
+    // 256-bit (32+ chars) secret key
     private static final String SECRET =
             "my_super_secure_jwt_secret_key_256_bits_long!";
 
