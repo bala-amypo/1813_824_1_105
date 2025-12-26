@@ -1,20 +1,19 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
-import java.util.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Visitor {
 
     @Id
     private Long id;
-
     private String fullName;
     private String phone;
-    private String email;
     private String idProofNumber;
+    private String email;
 
-    // getters & setters
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -24,9 +23,9 @@ public class Visitor {
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
     public String getIdProofNumber() { return idProofNumber; }
     public void setIdProofNumber(String idProofNumber) { this.idProofNumber = idProofNumber; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 }

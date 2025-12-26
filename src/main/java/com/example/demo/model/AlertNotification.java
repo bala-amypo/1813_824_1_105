@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,13 +10,13 @@ public class AlertNotification {
     @Id
     private Long id;
 
-    private String alertMessage;
+    private String alertMessage = "Visitor arrived";
     private String sentTo;
     private LocalDateTime sentAt;
 
-    @OneToOne
-    private VisitLog visitLog;
+    private Long visitLogId;
 
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -28,6 +29,6 @@ public class AlertNotification {
     public LocalDateTime getSentAt() { return sentAt; }
     public void setSentAt(LocalDateTime sentAt) { this.sentAt = sentAt; }
 
-    public VisitLog getVisitLog() { return visitLog; }
-    public void setVisitLog(VisitLog visitLog) { this.visitLog = visitLog; }
+    public Long getVisitLogId() { return visitLogId; }
+    public void setVisitLogId(Long visitLogId) { this.visitLogId = visitLogId; }
 }

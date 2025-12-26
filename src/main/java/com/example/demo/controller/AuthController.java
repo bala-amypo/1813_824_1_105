@@ -1,8 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.User;
+import com.example.demo.service.AuthService;
 import com.example.demo.security.JwtUtil;
-import com.example.demo.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,31 +16,27 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private AuthService authService;
 
     @Autowired
     private JwtUtil jwtUtil;
 
-    // REGISTER
+    // ================= REGISTER =================
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user) {
-        return ResponseEntity.ok(userService.register(user));
+    public ResponseEntity<?> register(@RequestBody User user) {
+        User savedUser = authService.register(user);
+        return ResponseEntity.ok(savedUser);
     }
 
-    // LOGIN
+    // ================= LOGIN =================
     @PostMapping("/login")
     public ResponseEntity<?> login(
             @RequestParam String username,
             @RequestParam String password) {
 
-        User user = userService.login(username, password);
+        User user = authService.login(username, password);
 
-        String token = jwtUtil.generateToken(
-                user.getUsername(),
-                user.getEmail(),
-                user.getId(),
-                user.getRole()
-        );
+        String token = jwtUtil.generateToken(user.getUsername());
 
         Map<String, Object> response = new HashMap<>();
         response.put("token", token);

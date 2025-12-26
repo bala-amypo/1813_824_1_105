@@ -2,25 +2,23 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Host;
 import com.example.demo.service.HostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/hosts")
 public class HostController {
 
-    private final HostService hostService;
-
-    public HostController(HostService hostService) {
-        this.hostService = hostService;
-    }
+    @Autowired
+    private HostService hostService;
 
     @PostMapping
-    public Host create(@RequestBody Host host) {
+    public Host createHost(@RequestBody Host host) {
         return hostService.createHost(host);
     }
 
     @GetMapping("/{id}")
-    public Host get(@PathVariable Long id) {
+    public Host getHost(@PathVariable Long id) {
         return hostService.getHost(id);
     }
 }
