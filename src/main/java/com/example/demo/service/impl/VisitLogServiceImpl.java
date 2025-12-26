@@ -6,6 +6,10 @@ import com.example.demo.service.VisitLogService;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.model.Host;
+import com.example.demo.model.Visitor;
+import com.example.demo.repository.HostRepository;
+import com.example.demo.repository.VisitorRepository;
 @Service
 public class VisitLogServiceImpl {
 
