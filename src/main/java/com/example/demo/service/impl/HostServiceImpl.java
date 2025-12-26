@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
-public class  Hostimpl implements HostService{
-    @Autowired
-    Hostrepository obj;
-    public Host createHost(Host host){
-      return obj.save(host);
+public class HostServiceImpl {
+
+    private HostRepository hostRepository;
+
+    public Host createHost(Host h) {
+        return hostRepository.save(h);
     }
-    public Host getHost(Long id){
-        return obj.findById(id).orElse(null);
-    }
-    public List<Host> getAllHost(){
-        return obj.findAll();
+
+    public Host getHost(Long id) {
+        return hostRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Host not found"));
     }
 }
