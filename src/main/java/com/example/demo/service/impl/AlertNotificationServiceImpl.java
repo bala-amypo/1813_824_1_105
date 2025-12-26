@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.AlertNotification;
 import com.example.demo.repository.AlertNotificationRepository;
 import com.example.demo.service.AlertNotificationService;
+import com.example.demo.model.VisitLog;
+import com.example.demo.repository.VisitLogRepository;
+
 @Service
 public class AlertNotificationServiceImpl {
 
