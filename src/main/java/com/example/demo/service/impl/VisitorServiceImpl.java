@@ -2,7 +2,7 @@ package com.example.demo.service.impl;
 import java.util.List;
 import com.example.demo.service.VisitorService;
 import org.springframework.stereotype.Service;
-import com.example.demo.repository.Visitorrepository;
+import com.example.demo.repository.VisitorRepository;
 import com.example.demo.model.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 @Service
