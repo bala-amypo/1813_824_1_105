@@ -1,31 +1,38 @@
-package com.example.demo.security;
-
 import io.jsonwebtoken.*;
+import io.jsonwebtoken.security.Keys;
+
+import java.security.Key;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtil {
 
-    private String secret;
-    private long jwtExpirationMs;
+    // 32+ characters (256 bits minimum)
+    private static final String SECRET =
+            "my_super_secure_jwt_secret_key_256_bits_long!";
 
-    public String generateToken(String username, String role, Long userId, String email){
-        Map<String,Object> claims = new HashMap<>();
-        claims.put("role", role);
-        claims.put("userId", userId);
-        claims.put("email", email);
+    private static final long EXPIRATION = 1000 * 60 * 60; // 1 hour
 
-        return Jwts.builder()
-            .setClaims(claims)
-            .setSubject(username)
-            .setIssuedAt(new Date())
-            .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-            .signWith(SignatureAlgorithm.HS256, secret)
-            .compact();
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(SECRET.getBytes());
     }
 
-    public Jws<Claims> validateAndGetClaims(String token){
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+    public String generateToken(Long userId, String email, String role) {
+        return Jwts.builder()
+                .setSubject(email)
+                .claim("userId", userId)
+                .claim("role", role)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+    public Claims extractClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 }
