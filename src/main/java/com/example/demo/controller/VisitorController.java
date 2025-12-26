@@ -10,19 +10,27 @@ import com.example.demo.model.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.example.demo.service.VisitorService;
 @RestController
-public class VisitorController{
-    @Autowired
-    VisitorService obj;
-    @PostMapping("/")
-    public Visitor Visitorcontroller(@RequestBody Visitor visitor){
-        return obj.createVisitor(visitor);
+@RequestMapping("/api/visitors")
+public class VisitorController {
+
+    private final VisitorService visitorService;
+
+    public VisitorController(VisitorService visitorService) {
+        this.visitorService = visitorService;
     }
+
+    @PostMapping
+    public Visitor create(@RequestBody Visitor visitor) {
+        return visitorService.createVisitor(visitor);
+    }
+
     @GetMapping("/{id}")
-    public Visitor Visitorcontr(@PathVariable Long id){
-        return obj.getVisitor(id);
+    public Visitor get(@PathVariable Long id) {
+        return visitorService.getVisitor(id);
     }
-    @GetMapping("/")
-    public List<Visitor> getVisitor(){
-        return obj.getAllVisitor();
+
+    @GetMapping
+    public List<Visitor> getAll() {
+        return visitorService.getAllVisitors();
     }
 }
