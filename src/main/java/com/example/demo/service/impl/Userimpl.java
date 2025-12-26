@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService {
         return "User registered successfully";
     }
 
-    // LOGIN
     @Override
     public String login(AuthRequest request) {
 
