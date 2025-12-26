@@ -1,39 +1,27 @@
 package com.example.demo.security;
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import java.security.Key;
-import java.util.*;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
+@Component
 public class JwtUtil {
 
-    private String secret;
-    private long jwtExpirationMs;
+    private static final String SECRET_KEY =
+            "mysecretkeymysecretkeymysecretkey12345";
 
-    private Key getKey() {
-        return Keys.hmacShaKeyFor(secret.getBytes());
-    }
-
-    public String generateToken(String username, String role, Long userId, String email) {
-
-        Map<String, Object> claims = new HashMap<>();
-        claims.put("role", role);
-        claims.put("userId", userId);
-        claims.put("email", email);
+    public String generateToken(String username, String email, Long userId, String role) {
 
         return Jwts.builder()
-                .setClaims(claims)
                 .setSubject(username)
+                .claim("email", email)
+                .claim("userId", userId)
+                .claim("role", role)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
-                .signWith(getKey(), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + 3600000))
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
-    }
-
-    public Jws<Claims> validateAndGetClaims(String token) {
-        return Jwts.parserBuilder()
-                .setSigningKey(getKey())
-                .build()
-                .parseClaimsJws(token);
     }
 }
