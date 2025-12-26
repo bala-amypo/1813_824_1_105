@@ -1,64 +1,30 @@
 package com.example.demo.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
-@Entity
-public class Appointment{
-    @Id
+
+import java.time.LocalDate;
+
+public class Appointment {
     private Long id;
-    private String visitor;
-    private String host;
-    @NotNull(message="past date can't be valid")
-    private String appointmentDate;
+    private LocalDate appointmentDate;
     private String purpose;
     private String status;
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id=id;
-    }
-    public String getVisitor(){
-        return visitor;
-    }
-    public void setVisitor(String visitor){
-        this.visitor=visitor;
-    }
-    public String getHost(){
-        return host;
-    }
-    public void setHost(String host){
-        this.host=host;
-    }
-    public String getAppointmentDate(){
-        return appointmentDate;
-    }
-    public void setAppointmentDate(){
-        this.appointmentDate=appointmentDate;
-    }
-    public String getPurpose(){
-        return purpose;
-    }
-    public void setPurpose(){
-        this.purpose=purpose;
-    }
-    public String getStatus(){
-        return status;
-    }
-    public void setStatus(){
-        this.status=status;
-    }
-    public Appointment(Long id,String visitor,String host,String appointmentDate,String purpose,String status){
-        this.id=id;
-        this.visitor=visitor;
-        this.host=host;
-        this.appointmentDate=appointmentDate;
-        this.purpose=purpose;
-        this.status=status;
-    }
-    public Appointment(){
+    private Visitor visitor;
+    private Host host;
 
-    }
-    
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
+    public LocalDate getAppointmentDate() { return appointmentDate; }
+    public void setAppointmentDate(LocalDate appointmentDate) { this.appointmentDate = appointmentDate; }
+
+    public String getPurpose() { return purpose; }
+    public void setPurpose(String purpose) { this.purpose = purpose; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public Visitor getVisitor() { return visitor; }
+    public void setVisitor(Visitor visitor) { this.visitor = visitor; }
+
+    public Host getHost() { return host; }
+    public void setHost(Host host) { this.host = host; }
 }
