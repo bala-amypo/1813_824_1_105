@@ -1,13 +1,15 @@
+package com.example.demo.security;
+
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
-import java.util.Map;
 
+@Component
 public class JwtUtil {
 
-    // 32+ characters (256 bits minimum)
     private static final String SECRET =
             "my_super_secure_jwt_secret_key_256_bits_long!";
 
