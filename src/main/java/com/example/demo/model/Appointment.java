@@ -1,12 +1,29 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDate;
 
+@Entity
 public class Appointment {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate appointmentDate;
     private String purpose;
     private String status;
+
+    @ManyToOne
+    private Visitor visitor;
+
+    @ManyToOne
+    private Host host;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -19,4 +36,10 @@ public class Appointment {
 
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
+
+    public Visitor getVisitor() { return visitor; }
+    public void setVisitor(Visitor visitor) { this.visitor = visitor; }
+
+    public Host getHost() { return host; }
+    public void setHost(Host host) { this.host = host; }
 }
