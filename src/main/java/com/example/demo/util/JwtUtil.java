@@ -1,7 +1,10 @@
-package com.example.demo.security;
-
+package com.example.demo.util;
 import io.jsonwebtoken.*;
 import java.util.*;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import java.nio.charset.StandardCharsets;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
