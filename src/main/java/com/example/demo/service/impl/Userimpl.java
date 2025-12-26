@@ -7,16 +7,16 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.model.User;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.Userrepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class Userimpl implements UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder passwordEncoder =
             new BCryptPasswordEncoder();
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public Userimpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
