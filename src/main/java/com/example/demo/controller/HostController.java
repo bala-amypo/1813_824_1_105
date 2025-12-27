@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/hosts")
+@RequestMapping("/hosts")
 public class HostController {
 
     @Autowired
@@ -17,7 +17,7 @@ public class HostController {
         return hostService.createHost(host);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     public Host getHost(@PathVariable Long id) {
         return hostService.getHost(id);
     }

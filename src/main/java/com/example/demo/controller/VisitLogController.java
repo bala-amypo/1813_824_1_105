@@ -7,24 +7,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/visitlogs")
+@RequestMapping("/visitlogs")
 public class VisitLogController {
 
     @Autowired
     private VisitLogService visitLogService;
 
-    @PostMapping("/checkin/{visitorId}/{hostId}")
+    @PostMapping("/checkin/visitorId/hostId")
     public VisitLog checkInVisitor(@PathVariable Long visitorId, @PathVariable Long hostId,
                                    @RequestParam String purpose) {
         return visitLogService.checkInVisitor(visitorId, hostId, purpose);
     }
 
-    @PostMapping("/checkout/{visitLogId}")
+    @PostMapping("/checkout/visitLogId")
     public VisitLog checkOutVisitor(@PathVariable Long visitLogId) {
         return visitLogService.checkOutVisitor(visitLogId);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     public VisitLog getVisitLog(@PathVariable Long id) {
         return visitLogService.getVisitLog(id);
     }
