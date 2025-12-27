@@ -21,7 +21,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public String login(@RequestBody User user) {
-        // Normally check credentials from DB; here we simulate
         return jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId(), user.getEmail());
     }
 }
