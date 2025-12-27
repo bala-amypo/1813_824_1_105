@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JwtUtil {
-
-    // MUST be injected via reflection or config
     private String secret;
     private long jwtExpirationMs;
 
