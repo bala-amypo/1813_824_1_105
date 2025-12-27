@@ -13,7 +13,7 @@ public class AlertNotificationController {
     @Autowired
     private AlertNotificationService alertService;
 
-    @PostMapping("/send/{visitLogId}")
+    @PostMapping("/send/visitLogId")
     public AlertNotification sendAlert(@PathVariable Long visitLogId) {
         return alertService.sendAlert(visitLogId);
     }
