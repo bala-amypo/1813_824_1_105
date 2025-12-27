@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/visitors")
+@RequestMapping("/visitors")
 public class VisitorController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class VisitorController {
         return visitorService.createVisitor(visitor);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id")
     public Visitor getVisitor(@PathVariable Long id) {
         return visitorService.getVisitor(id);
     }
