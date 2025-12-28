@@ -4,5 +4,5 @@ import com.example.demo.model.Host;
 
 public interface HostService {
     Host createHost(Host host);
-    Host getHost(Long id);
+    Host getHostById(Long id);
 }
