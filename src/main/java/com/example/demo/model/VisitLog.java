@@ -1,14 +1,14 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "visit_logs")
 public class VisitLog {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
@@ -19,10 +19,11 @@ public class VisitLog {
 
     private LocalDateTime checkInTime;
     private LocalDateTime checkOutTime;
-    private Boolean accessGranted = false;
-    private Boolean alertSent = false;
+    private String purpose;
+    private Boolean accessGranted;
+    private Boolean alertSent;
 
-    // Getters and Setters
+    // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -37,6 +38,9 @@ public class VisitLog {
 
     public LocalDateTime getCheckOutTime() { return checkOutTime; }
     public void setCheckOutTime(LocalDateTime checkOutTime) { this.checkOutTime = checkOutTime; }
+
+    public String getPurpose() { return purpose; }
+    public void setPurpose(String purpose) { this.purpose = purpose; }
 
     public Boolean getAccessGranted() { return accessGranted; }
     public void setAccessGranted(Boolean accessGranted) { this.accessGranted = accessGranted; }

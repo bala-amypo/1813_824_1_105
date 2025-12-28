@@ -1,34 +1,36 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "alert_notifications")
 public class AlertNotification {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String alertMessage = "Visitor arrived";
+    @OneToOne
+    private VisitLog visitLog;
+
     private String sentTo;
+    private String alertMessage;
     private LocalDateTime sentAt;
 
-    private Long visitLogId;
-
-    // Getters and Setters
+    // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public String getAlertMessage() { return alertMessage; }
-    public void setAlertMessage(String alertMessage) { this.alertMessage = alertMessage; }
+    public VisitLog getVisitLog() { return visitLog; }
+    public void setVisitLog(VisitLog visitLog) { this.visitLog = visitLog; }
 
     public String getSentTo() { return sentTo; }
     public void setSentTo(String sentTo) { this.sentTo = sentTo; }
 
+    public String getAlertMessage() { return alertMessage; }
+    public void setAlertMessage(String alertMessage) { this.alertMessage = alertMessage; }
+
     public LocalDateTime getSentAt() { return sentAt; }
     public void setSentAt(LocalDateTime sentAt) { this.sentAt = sentAt; }
-
-    public Long getVisitLogId() { return visitLogId; }
-    public void setVisitLogId(Long visitLogId) { this.visitLogId = visitLogId; }
 }
