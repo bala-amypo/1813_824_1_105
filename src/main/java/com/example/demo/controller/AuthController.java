@@ -1,30 +1,22 @@
 package com.example.demo.controller;
-
+import com.example.demo.model.User;
 import com.example.demo.security.JwtUtil;
-import com.example.demo.service.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
+    private JwtUtil jwtUtil = new JwtUtil();
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    private final UserService userService;
-    private final JwtUtil jwtUtil;
-
-    public AuthController(UserService userService, JwtUtil jwtUtil) {
-        this.userService = userService;
-        this.jwtUtil = jwtUtil;
+    @PostMapping("/register")
+    public User register(@RequestBody User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return user;
     }
 
     @PostMapping("/login")
-    public Map<String, String> login(@RequestParam String username) {
-
-        userService.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-        String token = jwtUtil.generateToken(username);
-        return Map.of("token", token);
+    public String login(@RequestBody User user) {
+        return jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId(), user.getEmail());
     }
 }
