@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.LoginRequest;
 import com.example.demo.dto.UserDTO;
 import com.example.demo.model.User;
 import com.example.demo.security.JwtUtil;
@@ -30,22 +31,21 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // ✅ REGISTER USER / ADMIN
+    // ✅ REGISTER
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody UserDTO userDTO) {
-        User user = userService.registerUser(userDTO);
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.registerUser(userDTO));
     }
 
-    // ✅ LOGIN → JWT TOKEN
+    // ✅ LOGIN
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) {
 
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            userDTO.getUsername(),
-                            userDTO.getPassword()
+                            request.getUsername(),
+                            request.getPassword()
                     )
             );
 
@@ -53,8 +53,8 @@ public class AuthController {
 
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
-            response.put("username", authentication.getName());
             response.put("type", "Bearer");
+            response.put("username", authentication.getName());
 
             return ResponseEntity.ok(response);
 
