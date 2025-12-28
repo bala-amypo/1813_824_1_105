@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.User;
 import com.example.demo.security.JwtUtil;
 import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -20,28 +18,13 @@ public class AuthController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return userService.register(user);
-    }
-
     @PostMapping("/login")
-    public Map<String, String> login(
-            @RequestParam String username,
-            @RequestParam String password) {
+    public Map<String, String> login(@RequestParam String username) {
 
-        User user = userService.authenticate(username, password);
+        userService.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        String token = jwtUtil.generateToken(
-                user.getUsername(),
-                user.getRole(),
-                user.getId(),
-                user.getEmail()
-        );
-
-        Map<String, String> response = new HashMap<>();
-        response.put("token", token);
-
-        return response;
+        String token = jwtUtil.generateToken(username);
+        return Map.of("token", token);
     }
 }
