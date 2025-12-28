@@ -1,43 +1,45 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.AlertNotification;
 import com.example.demo.model.VisitLog;
 import com.example.demo.repository.AlertNotificationRepository;
 import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.service.AlertNotificationService;
-import org.springframework.stereotype.Service;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 
-@Service
+import java.time.LocalDateTime;
+
 public class AlertNotificationServiceImpl implements AlertNotificationService {
 
     private AlertNotificationRepository alertRepository;
     private VisitLogRepository visitLogRepository;
 
+    public AlertNotificationServiceImpl() {}
+
+    public AlertNotificationServiceImpl(
+            AlertNotificationRepository alertRepository,
+            VisitLogRepository visitLogRepository) {
+        this.alertRepository = alertRepository;
+        this.visitLogRepository = visitLogRepository;
+    }
+
     @Override
     public AlertNotification sendAlert(Long visitLogId) {
-        VisitLog vl = visitLogRepository.findById(visitLogId).orElseThrow();
-        Optional<AlertNotification> existing = alertRepository.findByVisitLogId(visitLogId);
-        if(existing.isPresent()) throw new IllegalArgumentException("Alert already sent");
 
-        AlertNotification a = new AlertNotification();
-        a.setVisitLogId(visitLogId);
-        a.setSentTo(vl.getHost().getEmail());
-        a.setSentAt(LocalDateTime.now());
-        vl.setAlertSent(true);
-        visitLogRepository.save(vl);
-        return alertRepository.save(a);
-    }
+        if (alertRepository.findByVisitLogId(visitLogId).isPresent()) {
+            throw new IllegalArgumentException("Alert already sent");
+        }
 
-    @Override
-    public AlertNotification getAlert(Long id) {
-        return alertRepository.findById(id).orElseThrow();
-    }
+        VisitLog log = visitLogRepository.findById(visitLogId)
+                .orElseThrow(() -> new ResourceNotFoundException("VisitLog not found"));
 
-    @Override
-    public List<AlertNotification> getAllAlerts() {
-        return alertRepository.findAll();
+        AlertNotification alert = new AlertNotification();
+        alert.setVisitLog(log);
+        alert.setSentTo(log.getHost().getEmail());
+        alert.setSentAt(LocalDateTime.now());
+
+        log.setAlertSent(true);
+
+        return alertRepository.save(alert);
     }
 }
