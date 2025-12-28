@@ -1,30 +1,31 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.AlertNotification;
+import com.example.demo.entity.AlertNotification;
 import com.example.demo.service.AlertNotificationService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/alerts")
+@RequestMapping("/api/alerts")
 public class AlertNotificationController {
 
-    @Autowired
-    private AlertNotificationService alertService;
+    private final AlertNotificationService alertService;
 
-    @PostMapping("/send/visitLogId")
-    public AlertNotification sendAlert(@PathVariable Long visitLogId) {
-        return alertService.sendAlert(visitLogId);
+    public AlertNotificationController(AlertNotificationService alertService) {
+        this.alertService = alertService;
     }
 
-    @GetMapping("/{id}")
-    public AlertNotification getAlert(@PathVariable Long id) {
-        return alertService.getAlert(id);
+    @PostMapping
+    public ResponseEntity<AlertNotification> createAlert(@RequestBody AlertNotification alert) {
+        AlertNotification createdAlert = alertService.createAlert(alert);
+        return ResponseEntity.ok(createdAlert);
     }
 
     @GetMapping
-    public List<AlertNotification> getAllAlerts() {
-        return alertService.getAllAlerts();
+    public ResponseEntity<List<AlertNotification>> getAllAlerts() {
+        List<AlertNotification> alerts = alertService.getAllAlerts();
+        return ResponseEntity.ok(alerts);
     }
 }

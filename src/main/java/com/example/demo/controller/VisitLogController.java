@@ -1,36 +1,43 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.VisitLog;
+import com.example.demo.entity.VisitLog;
 import com.example.demo.service.VisitLogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/visitlogs")
+@RequestMapping("/api/visit-logs")
 public class VisitLogController {
 
-    @Autowired
-    private VisitLogService visitLogService;
+    private final VisitLogService visitLogService;
 
-    @PostMapping("/checkin/visitorId/hostId")
-    public VisitLog checkInVisitor(@PathVariable Long visitorId, @PathVariable Long hostId,
-                                   @RequestParam String purpose) {
-        return visitLogService.checkInVisitor(visitorId, hostId, purpose);
+    public VisitLogController(VisitLogService visitLogService) {
+        this.visitLogService = visitLogService;
     }
 
-    @PostMapping("/checkout/visitLogId")
-    public VisitLog checkOutVisitor(@PathVariable Long visitLogId) {
-        return visitLogService.checkOutVisitor(visitLogId);
+    @PostMapping
+    public ResponseEntity<VisitLog> createVisitLog(@RequestBody VisitLog visitLog) {
+        VisitLog createdLog = visitLogService.createVisitLog(visitLog);
+        return ResponseEntity.ok(createdLog);
     }
 
-    @GetMapping("/id")
-    public VisitLog getVisitLog(@PathVariable Long id) {
-        return visitLogService.getVisitLog(id);
+    @GetMapping("/{id}")
+    public ResponseEntity<VisitLog> getVisitLog(@PathVariable Long id) {
+        VisitLog log = visitLogService.getVisitLog(id);
+        return ResponseEntity.ok(log);
     }
 
-    @GetMapping("/active")
-    public List<VisitLog> getActiveVisits() {
-        return visitLogService.getActiveVisits();
+    @GetMapping
+    public ResponseEntity<List<VisitLog>> getAllVisitLogs() {
+        List<VisitLog> logs = visitLogService.getAllVisitLogs();
+        return ResponseEntity.ok(logs);
+    }
+
+    @GetMapping("/visitor/{visitorId}")
+    public ResponseEntity<List<VisitLog>> getLogsForVisitor(@PathVariable Long visitorId) {
+        List<VisitLog> logs = visitLogService.getVisitLogsForVisitor(visitorId);
+        return ResponseEntity.ok(logs);
     }
 }
