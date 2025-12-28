@@ -2,43 +2,57 @@ package com.example.demo.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-@Component
 public class JwtUtil {
-
-    private static final String SECRET =
-            "mysecretkeymysecretkeymysecretkeymysecretkey"; // 256-bit
-
-    private static final long EXPIRATION = 1000 * 60 * 60; // 1 hour
+    private String secret;
+    private long jwtExpirationMs;
 
     private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET.getBytes());
+        return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(String username, String role, Long userId, String email) {
+
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
+        claims.put("userId", userId);
+        claims.put("email", email);
+
         return Jwts.builder()
-                .setSubject(userDetails.getUsername())
+                .setClaims(claims)
+                .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String extractUsername(String token) {
+    public Jws<Claims> validateAndGetClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
                 .build()
-                .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+                .parseClaimsJws(token);
     }
 
-    public boolean validateToken(String token, UserDetails userDetails) {
-        return extractUsername(token).equals(userDetails.getUsername());
+    // REQUIRED for tests & reflection
+    public void setSecret(String secret) {
+        this.secret = secret;
+    }
+
+    public void setJwtExpirationMs(long jwtExpirationMs) {
+        this.jwtExpirationMs = jwtExpirationMs;
+    }
+
+    public String getSecret() {
+        return secret;
+    }
+
+    public long getJwtExpirationMs() {
+        return jwtExpirationMs;
     }
 }
