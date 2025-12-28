@@ -23,7 +23,7 @@ public class AlertNotificationServiceImpl implements AlertNotificationService {
         if(existing.isPresent()) throw new IllegalArgumentException("Alert already sent");
 
         AlertNotification a = new AlertNotification();
-        a.setVisitLogId(visitLogId);
+        //a.setVisitLogId(visitLogId);
         a.setSentTo(vl.getHost().getEmail());
         a.setSentAt(LocalDateTime.now());
         vl.setAlertSent(true);
