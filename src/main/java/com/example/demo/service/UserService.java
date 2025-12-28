@@ -2,8 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.User;
 
-import java.util.Optional;
-
 public interface UserService {
-    Optional<User> findByUsername(String username);
+    User register(User user);
+    User findByUsername(String username);
 }
