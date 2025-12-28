@@ -1,10 +1,11 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.User;
+import com.example.demo.dto.UserDTO;
+import com.example.demo.model.User;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface UserService {
-    User createUser(User user);
-    Optional<User> getUserByUsername(String username);
+    User registerUser(UserDTO userDTO);
+    List<User> getAllUsers();
 }
