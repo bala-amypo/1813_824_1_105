@@ -2,36 +2,29 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Visitor;
 import com.example.demo.service.VisitorService;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/visitors")
+@RequestMapping("/visitors")
 public class VisitorController {
 
-    private final VisitorService visitorService;
-
-    public VisitorController(VisitorService visitorService) {
-        this.visitorService = visitorService;
-    }
+    @Autowired
+    private VisitorService visitorService;
 
     @PostMapping
-    public ResponseEntity<Visitor> createVisitor(@RequestBody Visitor visitor) {
-        Visitor createdVisitor = visitorService.createVisitor(visitor);
-        return ResponseEntity.ok(createdVisitor);
+    public Visitor createVisitor(@RequestBody Visitor visitor) {
+        return visitorService.createVisitor(visitor);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Visitor> getVisitor(@PathVariable Long id) {
-        Visitor visitor = visitorService.getVisitor(id);
-        return ResponseEntity.ok(visitor);
+    @GetMapping("/id")
+    public Visitor getVisitor(@PathVariable Long id) {
+        return visitorService.getVisitor(id);
     }
 
     @GetMapping
-    public ResponseEntity<List<Visitor>> getAllVisitors() {
-        List<Visitor> visitors = visitorService.getAllVisitors();
-        return ResponseEntity.ok(visitors);
+    public List<Visitor> getAllVisitors() {
+        return visitorService.getAllVisitors();
     }
 }
