@@ -3,18 +3,36 @@ package com.example.demo.service.impl;
 import com.example.demo.model.VisitLog;
 import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.service.VisitLogService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class VisitLogServiceImpl implements VisitLogService {
 
-    @Autowired
-    private VisitLogRepository visitLogRepository;
+    private final VisitLogRepository visitLogRepository;
+
+    public VisitLogServiceImpl(VisitLogRepository visitLogRepository) {
+        this.visitLogRepository = visitLogRepository;
+    }
 
     @Override
-    public List<VisitLog> findByVisitorId(Long visitorId) {
+    public VisitLog createVisitLog(VisitLog visitLog) {
+        return visitLogRepository.save(visitLog);
+    }
+
+    @Override
+    public VisitLog getVisitLog(Long id) {
+        return visitLogRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<VisitLog> getAllVisitLogs() {
+        return visitLogRepository.findAll();
+    }
+
+    @Override
+    public List<VisitLog> getVisitLogsForVisitor(Long visitorId) {
         return visitLogRepository.findByVisitorId(visitorId);
     }
 }
