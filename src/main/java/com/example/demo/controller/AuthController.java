@@ -1,22 +1,47 @@
 package com.example.demo.controller;
+
 import com.example.demo.model.User;
 import com.example.demo.security.JwtUtil;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.example.demo.service.UserService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
-    private JwtUtil jwtUtil = new JwtUtil();
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
+
+    public AuthController(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
 
     @PostMapping("/register")
     public User register(@RequestBody User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        return user;
+        return userService.register(user);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        return jwtUtil.generateToken(user.getUsername(), user.getRole(), user.getId(), user.getEmail());
+    public Map<String, String> login(
+            @RequestParam String username,
+            @RequestParam String password) {
+
+        User user = userService.authenticate(username, password);
+
+        String token = jwtUtil.generateToken(
+                user.getUsername(),
+                user.getRole(),
+                user.getId(),
+                user.getEmail()
+        );
+
+        Map<String, String> response = new HashMap<>();
+        response.put("token", token);
+
+        return response;
     }
 }
