@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.dto.UserDTO;
+import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.UserService;
@@ -22,10 +23,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(UserDTO userDTO) {
+
         User user = new User();
         user.setUsername(userDTO.getUsername());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setEmail(userDTO.getEmail());
+
+        // ✅ ROLE FROM INPUT
+        if (userDTO.getRole() != null) {
+            user.setRole(userDTO.getRole());
+        } else {
+            user.setRole(Role.USER); // default
+        }
 
         return userRepository.save(user);
     }

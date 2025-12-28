@@ -30,16 +30,17 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // 🔹 REGISTER (USER / ADMIN)
+    // ✅ REGISTER USER / ADMIN
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<User> register(@RequestBody UserDTO userDTO) {
         User user = userService.registerUser(userDTO);
         return ResponseEntity.ok(user);
     }
 
-    // 🔹 LOGIN
+    // ✅ LOGIN → JWT TOKEN
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
+
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -53,6 +54,7 @@ public class AuthController {
             Map<String, Object> response = new HashMap<>();
             response.put("token", token);
             response.put("username", authentication.getName());
+            response.put("type", "Bearer");
 
             return ResponseEntity.ok(response);
 
