@@ -8,27 +8,27 @@ import com.example.demo.repository.HostRepository;
 import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.service.VisitLogService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class VisitLogServiceImpl implements VisitLogService {
 
-    private VisitLogRepository visitLogRepository;
-    private VisitorRepository visitorRepository;
-    private HostRepository hostRepository;
-
-    public VisitLogServiceImpl() {}
+    private final VisitLogRepository visitLogRepository;
+    private final VisitorRepository visitorRepository;
+    private final HostRepository hostRepository;
 
     public VisitLogServiceImpl(
             VisitLogRepository visitLogRepository,
             VisitorRepository visitorRepository,
             HostRepository hostRepository) {
+
         this.visitLogRepository = visitLogRepository;
         this.visitorRepository = visitorRepository;
         this.hostRepository = hostRepository;
     }
 
-    @Override
     public VisitLog checkIn(Long visitorId, Long hostId) {
 
         Visitor visitor = visitorRepository.findById(visitorId)
@@ -47,7 +47,6 @@ public class VisitLogServiceImpl implements VisitLogService {
         return visitLogRepository.save(log);
     }
 
-    @Override
     public VisitLog checkOut(Long visitLogId) {
 
         VisitLog log = visitLogRepository.findById(visitLogId)

@@ -3,20 +3,19 @@ package com.example.demo.service.impl;
 import com.example.demo.model.Appointment;
 import com.example.demo.repository.AppointmentRepository;
 import com.example.demo.service.AppointmentService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
+@Service
 public class AppointmentServiceImpl implements AppointmentService {
 
-    private AppointmentRepository appointmentRepository;
-
-    public AppointmentServiceImpl() {}
+    private final AppointmentRepository appointmentRepository;
 
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }
 
-    @Override
     public Appointment createAppointment(Appointment appointment) {
 
         if (appointment.getAppointmentDate().isBefore(LocalDate.now())) {

@@ -6,24 +6,24 @@ import com.example.demo.model.VisitLog;
 import com.example.demo.repository.AlertNotificationRepository;
 import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.service.AlertNotificationService;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class AlertNotificationServiceImpl implements AlertNotificationService {
 
-    private AlertNotificationRepository alertRepository;
-    private VisitLogRepository visitLogRepository;
-
-    public AlertNotificationServiceImpl() {}
+    private final AlertNotificationRepository alertRepository;
+    private final VisitLogRepository visitLogRepository;
 
     public AlertNotificationServiceImpl(
             AlertNotificationRepository alertRepository,
             VisitLogRepository visitLogRepository) {
+
         this.alertRepository = alertRepository;
         this.visitLogRepository = visitLogRepository;
     }
 
-    @Override
     public AlertNotification sendAlert(Long visitLogId) {
 
         if (alertRepository.findByVisitLogId(visitLogId).isPresent()) {
