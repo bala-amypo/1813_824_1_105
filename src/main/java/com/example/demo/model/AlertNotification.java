@@ -1,24 +1,14 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "alert_notifications")
 public class AlertNotification {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
     private VisitLog visitLog;
-
     private String sentTo;
     private String alertMessage;
     private LocalDateTime sentAt;
 
-    // getters and setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -29,7 +19,9 @@ public class AlertNotification {
     public void setSentTo(String sentTo) { this.sentTo = sentTo; }
 
     public String getAlertMessage() { return alertMessage; }
-    public void setAlertMessage(String alertMessage) { this.alertMessage = alertMessage; }
+    public void setAlertMessage(String alertMessage) {
+        this.alertMessage = alertMessage;
+    }
 
     public LocalDateTime getSentAt() { return sentAt; }
     public void setSentAt(LocalDateTime sentAt) { this.sentAt = sentAt; }
