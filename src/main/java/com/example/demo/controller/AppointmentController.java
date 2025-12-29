@@ -2,39 +2,46 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Appointment;
 import com.example.demo.service.AppointmentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/appointments")
+@RequestMapping("/api/appointments")
+@SecurityRequirement(name = "BearerAuth")
 public class AppointmentController {
 
-    private AppointmentService appointmentService;
+    private final AppointmentService appointmentService;
 
-    public AppointmentController(AppointmentService service) {
-        this.appointmentService = service;
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
     }
 
-    @PostMapping("/{vId}/{hId}")
-    public Appointment createAppointment(@PathVariable Long vId,
-                                         @PathVariable Long hId,
-                                         @RequestBody Appointment a) {
-        return appointmentService.createAppointment(vId, hId, a);
+    @PostMapping
+    public Appointment create(@RequestBody Appointment appointment) {
+        return appointmentService.createAppointment(appointment);
+    }
+
+    @GetMapping
+    public List<Appointment> getAll() {
+        return appointmentService.getAllAppointments();
     }
 
     @GetMapping("/{id}")
-    public Appointment getAppointment(@PathVariable Long id) {
-        return appointmentService.getAppointment(id);
+    public Appointment getById(@PathVariable Long id) {
+        return appointmentService.getAppointmentById(id);
     }
 
-    @GetMapping("/host/{id}")
-    public List<Appointment> getForHost(@PathVariable Long id) {
-        return appointmentService.getAppointmentsForHost(id);
+    @PutMapping("/{id}")
+    public Appointment update(@PathVariable Long id,
+                              @RequestBody Appointment appointment) {
+        return appointmentService.updateAppointment(id, appointment);
     }
 
-    @GetMapping("/visitor/{id}")
-    public List<Appointment> getForVisitor(@PathVariable Long id) {
-        return appointmentService.getAppointmentsForVisitor(id);
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        appointmentService.deleteAppointment(id);
+        return "Appointment deleted successfully";
     }
 }
