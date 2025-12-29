@@ -4,8 +4,8 @@ import com.example.demo.model.Appointment;
 import java.util.List;
 
 public interface AppointmentService {
-    Appointment createAppointment(Long visitorId, Long hostId, Appointment appointment);
+    Appointment createAppointment(Long vId, Long hId, Appointment a);
     Appointment getAppointment(Long id);
-    List<Appointment> getAppointmentsForHost(Long hostId);
-    List<Appointment> getAppointmentsForVisitor(Long visitorId);
+    List<Appointment> getAppointmentsForHost(Long id);
+    List<Appointment> getAppointmentsForVisitor(Long id);
 }
