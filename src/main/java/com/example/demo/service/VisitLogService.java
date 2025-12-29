@@ -4,8 +4,8 @@ import com.example.demo.model.VisitLog;
 import java.util.List;
 
 public interface VisitLogService {
-    VisitLog checkInVisitor(Long vId, Long hId, String purpose);
-    VisitLog checkOutVisitor(Long id);
-    List<VisitLog> getActiveVisits();
+    VisitLog checkInVisitor(Long visitorId, Long hostId, String purpose);
+    VisitLog checkOutVisitor(Long visitLogId);
     VisitLog getVisitLog(Long id);
+    List<VisitLog> getActiveVisits();
 }

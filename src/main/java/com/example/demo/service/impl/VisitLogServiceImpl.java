@@ -7,47 +7,44 @@ import com.example.demo.repository.VisitLogRepository;
 import com.example.demo.repository.VisitorRepository;
 import com.example.demo.repository.HostRepository;
 import com.example.demo.service.VisitLogService;
-
+import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class VisitLogServiceImpl implements VisitLogService {
 
-    public VisitLogRepository visitLogRepository;
-    public VisitorRepository visitorRepository;
-    public HostRepository hostRepository;
+    private VisitLogRepository visitLogRepository;
+    private VisitorRepository visitorRepository;
+    private HostRepository hostRepository;
 
-    public VisitLog checkInVisitor(Long vId, Long hId, String purpose) {
-        Visitor v = visitorRepository.findById(vId)
-                .orElseThrow(() -> new RuntimeException("Visitor not found"));
-        Host h = hostRepository.findById(hId)
-                .orElseThrow(() -> new RuntimeException("Host not found"));
-
+    @Override
+    public VisitLog checkInVisitor(Long visitorId, Long hostId, String purpose) {
+        Visitor v = visitorRepository.findById(visitorId).orElseThrow();
+        Host h = hostRepository.findById(hostId).orElseThrow();
         VisitLog vl = new VisitLog();
         vl.setVisitor(v);
         vl.setHost(h);
         vl.setCheckInTime(LocalDateTime.now());
         vl.setAccessGranted(true);
-
         return visitLogRepository.save(vl);
     }
 
-    public VisitLog checkOutVisitor(Long id) {
-        VisitLog vl = visitLogRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("VisitLog not found"));
-        if (vl.getCheckInTime() == null) {
-            throw new IllegalStateException("Visitor not checked in");
-        }
+    @Override
+    public VisitLog checkOutVisitor(Long visitLogId) {
+        VisitLog vl = visitLogRepository.findById(visitLogId).orElseThrow(() -> new RuntimeException("VisitLog not found"));
+        if(vl.getCheckInTime() == null) throw new IllegalStateException("Visitor not checked in");
         vl.setCheckOutTime(LocalDateTime.now());
         return visitLogRepository.save(vl);
     }
 
-    public List<VisitLog> getActiveVisits() {
-        return visitLogRepository.findByCheckOutTimeIsNull();
+    @Override
+    public VisitLog getVisitLog(Long id) {
+        return visitLogRepository.findById(id).orElseThrow(() -> new RuntimeException("VisitLog not found"));
     }
 
-    public VisitLog getVisitLog(Long id) {
-        return visitLogRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("VisitLog not found"));
+    @Override
+    public List<VisitLog> getActiveVisits() {
+        return visitLogRepository.findByCheckOutTimeIsNull();
     }
 }
